@@ -1,0 +1,29 @@
+<header>
+  <div class ="title"><span><img class= "logo" src = "/images/header.png"></span>Anipho<span><img class= "logo" src = "/images/header.png"></span></div>
+  <nav>
+    <ul class='lists-right'>
+      <li><%= link_to 'ログイン', class: "header-login" %></li>
+      <li><%= link_to '新規登録', class: "sign-up" %></li>
+    </ul>
+  </nav>
+</header>
+
+<div class = "home-content">
+  <div class = "center">
+   <h2>Anipho</h2>
+   <p>Aniphoはあなたの可愛いペットを動物好きな人達に自慢できるwebアプリケーションです</p>
+  </div>
+</div>
+
+<%= form_with( local: true, class: "search-form") do |form| %>
+  <%= form.text_field :hoge, placeholder: "投稿を検索する", class: "search-input" %>
+  <%= form.submit "検索", class: "search-btn" %>
+<% end %>
+
+<%= link_to "#", class: 'post-btn' do %>
+  <span class='post-btn-text'>投稿する</span>
+<% end %>
+
+<footer>
+  <div class= "copyright">Copyright anipho all rights reserved.</div>
+</footer>

@@ -1,0 +1,108 @@
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+header {
+  background-color: #6f5949;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  color: #ffffff;
+  margin-left: 20px;
+  font-size: 25px;
+}
+
+.logo {
+  height:25px;
+  width: 15px;
+}
+
+.lists-right {
+  display: flex;
+  color: #ffffff;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.lists-right li {
+  margin-left: 15px;
+}
+
+.header-login {
+  padding : 0 10px 0 0;
+}
+
+.home-content {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/images/top-page.jpg");
+  background-repeat:  no-repeat;                         /* 画像の繰り返しを指定  */ 
+  background-position:center center;             
+  background-size: cover;                               /* 画像のサイズを指定    */
+}
+
+.center {
+  background-color: rgba(67,44,2,0.4);
+}
+
+.home-content h2 {
+  color: #fff;
+  font-size: 35px;
+  text-align: center;
+}
+
+.home-content p {
+  color: #fff;
+  font-size: 20px;
+}
+
+.search-form {
+  text-align: center;
+  padding-top: 32px;
+}
+
+.search-form .search-input {
+  width: 30%;
+  margin-right: 10px;
+}
+
+.search-form .search-btn {
+  width: 10%;
+}
+
+.post-btn {
+  width: 120px;
+  background: #6f5949;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+  padding: 15px;
+}
+
+.post-btn-text {
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+
+footer {
+  background-color: #6f5949;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.copyright {
+  font-size: 10px;
+  color: #ffffff
+}
