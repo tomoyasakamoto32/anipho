@@ -1,12 +1,4 @@
-<header>
-  <div class ="title"><span><img class= "logo" src = "/images/header.png"></span>Anipho<span><img class= "logo" src = "/images/header.png"></span></div>
-  <nav>
-    <ul class='lists-right'>
-      <li><%= link_to 'ログイン', class: "header-login" %></li>
-      <li><%= link_to '新規登録', class: "sign-up" %></li>
-    </ul>
-  </nav>
-</header>
+<%= render "shared/header"%>
 
 <div class = "home-content">
   <div class = "center">
@@ -24,6 +16,4 @@
   <span class='post-btn-text'>投稿する</span>
 <% end %>
 
-<footer>
-  <div class= "copyright">Copyright anipho all rights reserved.</div>
-</footer>
+<%= render  "shared/footer" %>
