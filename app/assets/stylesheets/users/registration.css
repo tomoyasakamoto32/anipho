@@ -1,0 +1,89 @@
+form input,
+form textarea {
+  width: 100%;
+  margin: 5px 0 15px;
+  padding: 10px;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  font-family: "游ゴシック", "YuGothic";
+}
+
+form input[type="submit"] {
+  background-color: #6f5949;
+  border-radius: 20px;
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #a18068;
+}
+
+.container {
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+.contents {
+  display: flex;
+  justify-content: center;
+  margin-top: 130px;
+  margin-bottom: 130px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.field  {
+  margin-top: 25px;
+}
+
+.actions {
+  margin-top: 25px;
+}
+
+.field-top {
+  margin-top: 40px;
+}
+
+
+.title {
+  font-size: 35px;
+}
+
+.indispensable {
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+.error-message {
+  text-align: center;
+  color: red;
+}
+
+
+@media (max-width: 599px) {
+  .container {
+    width: 100%;
+  }
+  .contents {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}

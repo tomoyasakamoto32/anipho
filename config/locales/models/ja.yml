@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      user:
+    attributes:
+      user:
+        nickname: ニックネーム
+  devise:
+    confirmations:
+    failure:
+      invalid: "%{authentication_keys}またはパスワードが違います。"
+    sessions: 
+      signed_out: ログアウトしました。
