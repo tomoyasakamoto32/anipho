@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   with_options presence: true do
    validates :image
    validates :title
-   validates :category_id, numericality: { other_than: 1 } 
+   validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
   end
 end
