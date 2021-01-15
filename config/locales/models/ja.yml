@@ -10,5 +10,6 @@ ja:
     failure:
       invalid: "%{authentication_keys}またはパスワードが違います。"
       unauthenticated: "アカウント登録もしくはログインしてください。"
+      not_found_in_database: "%{authentication_keys}またはパスワードが違います。"
     sessions: 
       signed_out: ログアウトしました。

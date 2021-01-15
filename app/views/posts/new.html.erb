@@ -1,7 +1,9 @@
 <%= render "shared/header"%>
-<div class="items-sell-main">
-  <h2 class="items-sell-title">投稿内容を入力</h2>
+<div class="posts-contents">
+<div class="posts-main">
+  <h2 class="posts-parents">投稿内容を入力</h2>
   <%= form_with model: @post, url: posts_path, local: true do |f| %>
+  <%= render "shared/error_messages", model: @post %>
   <div class="img-upload">
       <div class="weight-bold-text">
         ペットの写真
@@ -14,24 +16,35 @@
         <%= f.file_field :image, id:"item-image" %>
       </div>
   </div>
-  <div class="new-items">
+  <div class="new-postss">
       <div class="weight-bold-text">
         写真のタイトル
         <span class="indispensable">必須</span>
       </div>
       <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
   </div>
-  <div class="new-items">
+  <div class="new-posts">
       <div class="weight-bold-text">
         ペットの名前
       </div>
-      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"ペットの名前（任意 40文字まで)", maxlength:"40" %>
+      <%= f.text_area :animal_name, class:"items-text", id:"item-name", placeholder:"ペットの名前（任意 40文字まで)", maxlength:"40" %>
   </div>
-  <div class="items-explain">
+  <div class="new-posts">
+      <div class="weight-bold-text">
+        ペットの種類
+      </div>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"genre-select"}) %>
+  </div>
+  <div class="new-posts">
         <div class="weight-bold-text">
           写真の説明、自由記入欄
         </div>
         <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"写真の説明（任意 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
-      </div>
+  </div>
+  <div class="post-btn-contents">
+      <%= f.submit "投稿する" ,class:"posts-btn" %>
+  </div>
   <% end %>
 </div>
+</div>
+<%= render "shared/footer"%>
