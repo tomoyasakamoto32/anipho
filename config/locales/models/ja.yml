@@ -9,5 +9,6 @@ ja:
     confirmations:
     failure:
       invalid: "%{authentication_keys}またはパスワードが違います。"
+      unauthenticated: "アカウント登録もしくはログインしてください。"
     sessions: 
       signed_out: ログアウトしました。

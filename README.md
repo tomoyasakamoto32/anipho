@@ -19,9 +19,9 @@
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
 | title              | string     | null: false                     |
-| explanation        | text       | null: false                     | 
+| explanation        | text       |                                 | 
 | category_id        | integer    | null: false                     |
-| name               | string     |                                 |
+| animal_name        | string     |                                 |
 | user               | references | null: false, foreign_key: true  |
 
 ### Association

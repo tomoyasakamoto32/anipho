@@ -1,0 +1,37 @@
+<%= render "shared/header"%>
+<div class="items-sell-main">
+  <h2 class="items-sell-title">投稿内容を入力</h2>
+  <%= form_with model: @post, url: posts_path, local: true do |f| %>
+  <div class="img-upload">
+      <div class="weight-bold-text">
+        ペットの写真
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+  </div>
+  <div class="new-items">
+      <div class="weight-bold-text">
+        写真のタイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+  </div>
+  <div class="new-items">
+      <div class="weight-bold-text">
+        ペットの名前
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"ペットの名前（任意 40文字まで)", maxlength:"40" %>
+  </div>
+  <div class="items-explain">
+        <div class="weight-bold-text">
+          写真の説明、自由記入欄
+        </div>
+        <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"写真の説明（任意 1,000文字まで）" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+  <% end %>
+</div>
