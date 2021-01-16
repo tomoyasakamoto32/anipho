@@ -1,9 +1,9 @@
 ja:
   activerecord:
     models:
-      user:
+      user: 
     attributes:
-      user:
+      user: 
         nickname: ニックネーム
   devise:
     confirmations:

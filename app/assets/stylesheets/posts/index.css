@@ -89,6 +89,10 @@ header {
   padding: 15px;
 }
 
+.post-btn:hover {
+  background-color: #a18068;
+}
+
 .post-btn-text {
   color: #fff;
   display: block;
