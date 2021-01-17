@@ -78,6 +78,46 @@ header {
   width: 10%;
 }
 
+.post-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post-list {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list {
+  margin:0 2vh 2vh 0;
+  border:1px solid black;
+  width: 40vh;
+  position: relative;
+}
+
+.post-img-content {
+  position: relative;
+}
+
+.post-img {
+  width: 40vh;
+  height: 25vh;
+}
+
+.post-title {
+  color: black;
+  padding-bottom: 3vh;
+}
+
+.root-show {
+  color: #6f5949;
+  position: absolute;
+  bottom: 0;
+}
+
 .post-btn {
   width: 120px;
   background: #6f5949;
@@ -116,4 +156,20 @@ footer {
   color: #ffffff
 }
 
+@media (max-width: 599px) {
+
+  .search-form {
+    text-align: center;
+    padding-top: 32px;
+  }
+
+  .search-form .search-input  {
+    width:50%;
+  }
+
+  .search-form .search-btn {
+    width: 20%;
+  }  
+
+}
 
