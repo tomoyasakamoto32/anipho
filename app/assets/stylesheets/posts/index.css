@@ -18,10 +18,6 @@ header {
 }
 
 
-.logo {
-  height:20px;
-}
-
 .lists-right {
   display: flex;
   color: #ffffff;
@@ -173,10 +169,6 @@ footer {
   .title {
     width: 10%;
     margin-left:5px;
-  }
-
-  .logo {
-    display: none;
   }
 
   .lists-right {
