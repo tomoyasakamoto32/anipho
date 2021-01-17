@@ -12,6 +12,20 @@
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
 
+<div class = "post-contents">
+  <ul class = "post-list">
+    <% @posts.each do |post| %>
+    <li class = "list">
+      <%= link_to "#" do %>
+      <%= image_tag post.image, class: "post-img" %>
+      <h3 class='post-title'><%= post.title %></h3>
+      <p class = "root-show">〜クリックして詳細を見る〜</p>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>
 <% end %>
