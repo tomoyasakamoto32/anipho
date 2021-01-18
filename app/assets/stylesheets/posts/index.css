@@ -93,6 +93,10 @@ header {
   position: relative;
 }
 
+.list:hover {
+  background-color: rgb(233, 231, 231);
+}
+
 .post-img-content {
   position: relative;
 }
@@ -104,12 +108,13 @@ header {
 
 .post-title {
   color: black;
-  padding-bottom: 3vh;
+  padding-bottom:3vh;
 }
 
 .root-show {
   color: #6f5949;
   position: absolute;
+  width:100%;
   bottom: 0;
 }
 
