@@ -16,7 +16,7 @@
   <ul class = "post-list">
     <% @posts.each do |post| %>
     <li class = "list">
-      <%= link_to "#" do %>
+      <%= link_to post_path(post.id) do %>
       <%= image_tag post.image, class: "post-img" %>
       <h3 class='post-title'><%= post.title %></h3>
       <p class = "root-show">〜クリックして詳細を見る〜</p>
