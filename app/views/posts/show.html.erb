@@ -1,0 +1,37 @@
+<%= render "shared/header" %>
+  <div class = "show-main">
+    <div class = "show-contents">
+      <div class= "image-content">
+       <%= image_tag @post.image, class: "show-img" %>
+      </div>
+      <div class = "btn-contents">
+        <%= link_to '編集する', "#", class: "edit-btn"%>
+        <%= link_to '削除する', "#", class: "delete-btn"%>
+      </div>
+      <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">投稿者</th>
+          <td class="detail-value"><%= @post.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">タイトル</th>
+          <td class="detail-value"><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">ペットの名前</th>
+          <td class="detail-value"><%= @post.animal_name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">ペットの種類、カテゴリー</th>
+          <td class="detail-value"><%= @post.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">写真の説明、自由記入欄</th>
+          <td class="detail-value"><%= @post.explanation %></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+<%= render "shared/footer"%>
