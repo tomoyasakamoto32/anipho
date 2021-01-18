@@ -5,10 +5,12 @@
       <div class= "image-content">
        <%= image_tag @post.image, class: "show-img" %>
       </div>
+      <% if user_signed_in? && current_user.id == @post.user.id %>
       <div class = "btn-contents">
         <%= link_to '編集する', "#", class: "edit-btn"%>
         <%= link_to '削除する', "#", class: "delete-btn"%>
       </div>
+      <% end %>
       <table class="detail-table">
       <tbody>
         <tr>
