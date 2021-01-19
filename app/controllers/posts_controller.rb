@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.includes(:user).order('created_at DESC')
@@ -19,12 +20,26 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
 
   private
   def post_params
     params.require(:post).permit(:image, :title, :explanation, :animal_name, :category_id).merge(user_id: current_user.id)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
