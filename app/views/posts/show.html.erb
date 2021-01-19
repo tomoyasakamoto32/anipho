@@ -40,7 +40,7 @@
         <h2>気になった投稿にコメントしよう!</h2>
         <% if user_signed_in? %>
           <%= form_with(model: [@post, @comment], local: true) do |form| %>
-            <%= form.text_area :contents, placeholder: "コメントする", rows: "2" %>
+            <%= form.text_area :content, placeholder: "コメントする", rows: "2" %>
             <%= form.submit "コメントを送信する" %>
           <% end %>
         <% else %>
@@ -51,8 +51,8 @@
           <h4>＜コメント一覧＞</h4>
           <% @comments.each do |comment| %>
             <p>
-              <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-              <%= comment.text %>
+              <strong><%= link_to comment.user.nickname, "#" ,class: "comment-user"%>：</strong>
+              <%= comment.content %><span><%= link_to '削除する', post_comment_path() %></span>
             </p>
           <% end %>
         </div>

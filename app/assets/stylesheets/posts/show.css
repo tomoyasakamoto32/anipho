@@ -79,6 +79,10 @@ img.show-img {
   color:#6f5949;
 }
 
+.comment-user {
+  color:#6f5949;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;
