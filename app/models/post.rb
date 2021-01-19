@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to :user
   has_one_attached :image
+  has_many :comments
 
   with_options presence: true do
    validates :image
