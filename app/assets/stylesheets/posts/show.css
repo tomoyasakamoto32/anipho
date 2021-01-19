@@ -61,6 +61,36 @@ img.show-img {
   background-color: #a18068;
 }
 
+.comment-container {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 6% 0;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+}
+
+.comment-box {
+  width: 80%;
+}
+
+.comment-box h2 {
+  margin-bottom: 4vh;
+  color:#6f5949;
+}
+
+.comment-user {
+  color:#6f5949;
+}
+
+.comment-delete {
+  color:#6f5949;
+}
+
+a.comment-delete {
+  margin-left:10px;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;
