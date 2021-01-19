@@ -52,7 +52,10 @@
           <% @comments.each do |comment| %>
             <p>
               <strong><%= link_to comment.user.nickname, "#" ,class: "comment-user"%>：</strong>
-              <%= comment.content %><span><%= link_to '削除する', post_comment_path() %></span>
+              <%= comment.content %>
+              <% if user_signed_in? && current_user.id == comment.user.id %>
+              <span><%= link_to '[削除する]', post_comment_path(@post.id, comment.id), method: :delete, class: "comment-delete" %></span>
+              <% end %>
             </p>
           <% end %>
         </div>

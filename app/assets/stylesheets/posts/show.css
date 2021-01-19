@@ -83,6 +83,14 @@ img.show-img {
   color:#6f5949;
 }
 
+.comment-delete {
+  color:#6f5949;
+}
+
+a.comment-delete {
+  margin-left:10px;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;
