@@ -8,7 +8,7 @@
       <% if user_signed_in? && current_user.id == @post.user.id %>
       <div class = "btn-contents">
         <%= link_to '編集する', edit_post_path(@post.id), class: "edit-btn"%>
-        <%= link_to '削除する', "#", class: "delete-btn"%>
+        <%= link_to '削除する', post_path(@post.id), method: :delete, class: "delete-btn"%>
       </div>
       <% end %>
       <table class="detail-table">

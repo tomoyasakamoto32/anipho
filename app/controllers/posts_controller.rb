@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_post, only: [:show, :edit, :update]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :root_to_path, only: [:edit, :destroy]
+
 
   def index
     @posts = Post.includes(:user).order('created_at DESC')
@@ -33,6 +35,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    if @post.destroy
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
 
   private
   def post_params
@@ -41,5 +51,11 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:id])
+  end
+
+  def root_to_path
+    if @post.id = nil || current_user.id != @post.user.id
+      redirect_to root_path
+    end
   end
 end
