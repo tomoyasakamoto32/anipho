@@ -164,6 +164,11 @@ footer {
   margin: 5% 0;
 }
 
+.seach-result {
+  margin-top:2%;
+  color:#6f5949;
+}
+
 @media (max-width: 599px) {
 
   .contents {
