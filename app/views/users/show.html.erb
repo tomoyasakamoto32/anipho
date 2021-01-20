@@ -1,0 +1,25 @@
+<%= render "shared/header"%>
+<h2 class = "user-post"><%= current_user.nickname %>さんの投稿一覧</h2>
+<div class = "post-contents">
+  <% if @posts != [] %>
+  <ul class = "post-list">
+    <% @posts.each do |post| %>
+    <li class = "list">
+      <%= link_to post_path(post.id) do %>
+      <%= image_tag post.image, class: "post-img" %>
+      <h3 class='post-title'><%= post.title %></h3>
+      <p class = "root-show">〜クリックして詳細を見る〜</p>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+  <% else %>
+  <h2 class = "user-post"><%= current_user.nickname %>さんの投稿はまだありません</h2>
+  <% end %>
+</div>
+
+<%= link_to new_post_path, class: 'post-btn' do %>
+  <span class='post-btn-text'>投稿する</span>
+<% end %>
+
+<%= render "shared/footer"%>

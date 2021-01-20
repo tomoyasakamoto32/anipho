@@ -79,6 +79,7 @@ img.show-img {
   color:#6f5949;
 }
 
+
 .comment-user {
   color:#6f5949;
 }
@@ -89,6 +90,11 @@ img.show-img {
 
 a.comment-delete {
   margin-left:10px;
+}
+
+.alert {
+  text-align: center;
+  color: #6f5949;
 }
 
 @media (max-width: 599px) {
