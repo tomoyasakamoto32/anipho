@@ -149,7 +149,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: relative;
+  position: fixed;
   bottom: 0; 
   width: 100%;
 }
@@ -157,6 +157,11 @@ footer {
 .copyright {
   font-size: 10px;
   color: #ffffff
+}
+
+.user-post {
+  color: #6f5949;
+  margin: 5% 0;
 }
 
 @media (max-width: 599px) {
