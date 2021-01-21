@@ -10,7 +10,7 @@
 <%= render "shared/search_form" %>
 
 <% if @posts == [] %>
-<h2 class = "empty" >投稿はまだありません</h2>
+<h2 class = "empty">検索結果はありません</h2>
 <% else %>
 <div class = "post-contents">
   <ul class = "post-list">
@@ -26,6 +26,7 @@
   </ul>
 </div>
 <% end %>
+
 
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>

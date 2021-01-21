@@ -10,4 +10,12 @@ class Post < ApplicationRecord
    validates :title
    validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
   end
+
+  def self.search(search)
+    if search != ""
+      Post.where(['title LIKE(?) OR explanation LIKE(?) OR animal_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      Post.includes(:user).order('created_at DESC')
+    end
+  end
 end

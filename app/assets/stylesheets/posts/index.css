@@ -87,7 +87,7 @@ header {
 }
 
 .list {
-  margin:0 2vh 2vh 0;
+  margin:0 2vh 4vh 0;
   border:1px solid black;
   width: 40vh;
   position: relative;
@@ -162,6 +162,11 @@ footer {
 .user-post {
   color: #6f5949;
   margin: 5% 0;
+}
+
+.empty {
+  margin-top:2%;
+  color:#6f5949;
 }
 
 @media (max-width: 599px) {
