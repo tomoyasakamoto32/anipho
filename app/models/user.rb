@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_many :likes
   
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :nickname, presence: true
