@@ -169,6 +169,10 @@ footer {
   color:#6f5949;
 }
 
+.like-box{
+  float: right;
+}
+
 @media (max-width: 599px) {
 
   .contents {
