@@ -13,25 +13,12 @@
 <h2 class = "empty" >投稿はまだありません</h2>
 <% else %>
 <div class = "post-contents">
-  <ul class = "post-list">
-    <% @posts.each do |post| %>
-    <li class = "list">
-      <%= image_tag post.image, class: "post-img" %>
-      <h3 class='post-title'>
-        <%= post.title %>
-        <span class = "like-box">
-        <% if current_user.liked_by?(post.id) %>
-          <%= link_to 'いいねを外す', destroy_like_path(post), method: :DELETE %><%= post.likes.count %>
-        <% else %>
-          <%= link_to 'いいね', create_like_path(post), method: :POST %><%= post.likes.count %>
-        <% end %>
-        </span>
-      </h3>
-      <%= link_to post_path(post.id) do %>
-       <p class = "root-show">〜クリックして詳細を見る〜</p>
-      <% end %>
-    <% end %>
-    </li>
+  <ul class = "post-list" >
+  <% @posts.each do |post| %>
+    <div id="post_<%= post.id %>">
+    <%= render "shared/post", post: post %>
+    </div>
+  <% end %>
   </ul>
 </div>
 <% end %>
