@@ -4,13 +4,19 @@
     <%= post.title %>
     <span class = "like-box">
     <% if current_user.liked_by?(post.id) %>
-      <%= link_to 'いいねを外す', destroy_like_path(post.id), method: :DELETE, remote: true %><%= post.likes.count %>
+      <%= link_to  destroy_like_path(post.id), class: "like-link", method: :DELETE, remote: true do %>
+      <i class="fa fa-heart unlike-btn"></i>
+      <% end %>
+      <%= post.likes.count %>
     <% else %>
-      <%= link_to 'いいね', create_like_path(post.id), method: :POST, remote: true %><%= post.likes.count %>
+      <%= link_to create_like_path(post.id), class: "like-link", method: :POST, remote: true do %>
+      <i class="fa fa-heart like-btn"></i>
+      <% end %>
+      <%= post.likes.count %>
     <% end %>
     </span>
   </h3>
   <%= link_to post_path(post.id) do %>
-    <p class = "root-show">〜クリックして詳細を見る〜</p>
+    <p class = "root-show">--クリックして詳細を見る--</p>
   <% end %>
 </li>

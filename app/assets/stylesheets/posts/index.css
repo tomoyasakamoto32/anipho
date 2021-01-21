@@ -93,9 +93,7 @@ header {
   position: relative;
 }
 
-.list:hover {
-  background-color: rgb(233, 231, 231);
-}
+
 
 .post-img-content {
   position: relative;
@@ -108,7 +106,9 @@ header {
 
 .post-title {
   color: black;
-  padding-bottom:3vh;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .root-show {
@@ -116,6 +116,10 @@ header {
   position: absolute;
   width:100%;
   bottom: 0;
+}
+
+.root-show:hover {
+  background-color: rgb(233, 231, 231);
 }
 
 .post-btn {
@@ -171,6 +175,54 @@ footer {
 
 .like-box{
   float: right;
+  margin-bottom:3vh;
+}
+
+.like-link {
+  text-decoration: none;
+}
+
+.like-link:hover {
+  background-color: #fff!important;
+}
+
+.like-btn {
+  font-size: 15px;
+  color: #808080;
+}
+ 
+.unlike-btn {
+  font-size: 15px;
+  color: #e54747;
+}
+
+.like-info {
+  text-align: right;
+  color:#6f5949;
+  font-size:3px;
+}
+
+.root-box {
+  display:flex;
+  justify-content: center;
+  width:100%;
+  margin:3vh 0 ;
+}
+
+.root-index {
+  color:#fff;
+  font-size:18px;
+  border:1px solid #6f5949;
+  background:#6f5959;
+  padding:5px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.root-index:hover {
+  background-color: #a18068;
 }
 
 @media (max-width: 599px) {

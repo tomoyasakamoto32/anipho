@@ -97,6 +97,16 @@ a.comment-delete {
   color: #6f5949;
 }
 
+.unlike-show {
+  text-align: right;
+  color:#6f5949;
+}
+
+.like-show {
+  text-align: right;
+  color:#6f5949;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;
