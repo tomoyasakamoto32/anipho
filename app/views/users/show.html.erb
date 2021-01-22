@@ -1,17 +1,25 @@
 <%= render "shared/header"%>
 <h2 class = "user-post"><%= current_user.nickname %>さんの投稿一覧</h2>
+<div class = "root-box">
+  <%= link_to 'トップに戻る', root_path, class:"root-index" %>
+</div>
 <div class = "post-contents">
   <% if @posts != [] %>
-  <ul class = "post-list">
-    <% @posts.each do |post| %>
+  <ul class = "post-list" >
+  <% @posts.each do |post| %>
     <li class = "list">
-      <%= link_to post_path(post.id) do %>
       <%= image_tag post.image, class: "post-img" %>
-      <h3 class='post-title'><%= post.title %></h3>
-      <p class = "root-show">〜クリックして詳細を見る〜</p>
+      <h3 class='post-title'>
+      <span class = "like-box" id="like_<%= post.id %>">
+      <%= render "shared/show_like", post: post %>
+      </span>
+      <%= post.title %>
+      </h3>
+      <%= link_to post_path(post.id) do %>
+      <p class = "root-show">--クリックして詳細を見る--</p>
       <% end %>
     </li>
-    <% end %>
+  <% end %>
   </ul>
   <% else %>
   <h2 class = "user-post"><%= current_user.nickname %>さんの投稿はまだありません</h2>
