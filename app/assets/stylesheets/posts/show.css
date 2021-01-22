@@ -104,7 +104,9 @@ a.comment-delete {
 
 .like-show {
   text-align: right;
-  color:#6f5949;
+}
+.like {
+  float: right;
 }
 
 @media (max-width: 599px) {

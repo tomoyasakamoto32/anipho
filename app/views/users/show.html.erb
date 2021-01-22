@@ -10,10 +10,10 @@
     <li class = "list">
       <%= image_tag post.image, class: "post-img" %>
       <h3 class='post-title'>
-      <%= post.title %>
       <span class = "like-box" id="like_<%= post.id %>">
       <%= render "shared/show_like", post: post %>
       </span>
+      <%= post.title %>
       </h3>
       <%= link_to post_path(post.id) do %>
       <p class = "root-show">--クリックして詳細を見る--</p>

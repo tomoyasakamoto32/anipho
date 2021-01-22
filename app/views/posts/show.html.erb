@@ -12,14 +12,14 @@
       </div>
       <% end %>
       <% if user_signed_in? %>
+      <div class= "like">いいね</div>
       <div class = "like-show" id="like_<%= @post.id %>">
-        <span>いいね</span>
         <%= render "shared/show_like", post: @post %>
       </div>
       <% else %>
       <div class = "like-show">
+        <div class= "like">いいね</div>
         <div class = "unlike-show">
-        <span>いいね</span>
         <i class="fa fa-heart like-btn"></i>
         <%= @post.likes.count %>
         </div>

@@ -109,6 +109,7 @@ header {
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom:1vh;
 }
 
 .root-show {
@@ -200,6 +201,7 @@ footer {
   text-align: right;
   color:#6f5949;
   font-size:3px;
+  margin-bottom:4vh;
 }
 
 .root-box {
