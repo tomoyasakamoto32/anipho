@@ -1,6 +1,10 @@
 a {
   text-decoration: none;
-  color: #ffffff;
+  color:  #a18068;
+}
+
+a.user-nickname, a.logout, a.sign-up, a.header-login, a.title-name {
+  color:white;
 }
 
 header {
@@ -226,6 +230,10 @@ footer {
 .root-index:hover {
   background-color: #a18068;
 }
+
+
+
+
 
 @media (max-width: 599px) {
 

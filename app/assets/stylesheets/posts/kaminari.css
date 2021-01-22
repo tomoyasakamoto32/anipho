@@ -1,0 +1,23 @@
+.pagination {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:5vh;
+  
+}
+.page {
+  width:1.5vw;
+  text-align: center;
+  margin: 0 2px;
+}
+
+.next, .last {
+  margin: 0 2px;
+}
+
+
+@media (max-width: 599px) {
+  .next, .last, .page{
+    margin: 0 5px;
+  }
+}
