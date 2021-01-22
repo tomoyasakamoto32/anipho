@@ -59,6 +59,7 @@
 <% end %>
 <% end %>
 
+<%= paginate(@posts) %>
 
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>

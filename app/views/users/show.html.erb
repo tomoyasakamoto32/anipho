@@ -1,8 +1,10 @@
 <%= render "shared/header"%>
-<h2 class = "user-post"><%= current_user.nickname %>さんの投稿一覧</h2>
+<h2 class = "user-post"><%= @nickname %>さんの投稿一覧</h2>
 <div class = "root-box">
   <%= link_to 'トップに戻る', root_path, class:"root-index" %>
 </div>
+
+<% if user_signed_in? %>
 <div class = "post-contents">
   <% if @posts != [] %>
   <ul class = "post-list" >
@@ -22,9 +24,34 @@
   <% end %>
   </ul>
   <% else %>
-  <h2 class = "user-post"><%= current_user.nickname %>さんの投稿はまだありません</h2>
+  <h2 class = "user-post"><%= @nickname %>さんの投稿はまだありません</h2>
   <% end %>
 </div>
+<% else %>
+<div class = "post-contents">
+  <ul class = "post-list" >
+  <% @posts.each do |post| %>
+    <li class = "list">
+      <%= image_tag post.image, class: "post-img" %>
+      <h3 class='post-title'>
+      <div class = "like-box" >
+      <i class="fa fa-heart like-btn"></i>
+      <%= post.likes.count %>
+      </div>
+      <%= post.title %>
+      </h3>
+      <p class = "like-info">＊いいねするにはログインが必要です</p>
+      <%= link_to post_path(post.id) do %>
+      <p class = "root-show">--クリックして詳細を見る--</p>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+
+<%= paginate(@posts) %>
 
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>

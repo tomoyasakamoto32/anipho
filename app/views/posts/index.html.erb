@@ -9,47 +9,53 @@
 
 <%= render "shared/search_form" %>
 
-<% if user_signed_in? %>
-<div class = "post-contents">
-  <ul class = "post-list" >
-  <% @posts.each do |post| %>
-    <li class = "list">
-      <%= image_tag post.image, class: "post-img" %>
-      <h3 class='post-title'>
-      <span class = "like-box" id="like_<%= post.id %>">
-      <%= render "shared/show_like", post: post %>
-      </span>
-      <%= post.title %>
-      </h3>
-      <%= link_to post_path(post.id) do %>
-      <p class = "root-show">--クリックして詳細を見る--</p>
-      <% end %>
-    </li>
-  <% end %>
-  </ul>
-</div>
+<% if @posts == [] %>
+  <h2 class = "empty">検索結果はありません</h2>
 <% else %>
-<div class = "post-contents">
-  <ul class = "post-list" >
-  <% @posts.each do |post| %>
-    <li class = "list">
-      <%= image_tag post.image, class: "post-img" %>
-      <h3 class='post-title'>
-      <div class = "like-box" >
-      <i class="fa fa-heart like-btn"></i>
-      <%= post.likes.count %>
-      </div>
-      <%= post.title %>
-      </h3>
-      <p class = "like-info">＊いいねするにはログインが必要です</p>
-      <%= link_to post_path(post.id) do %>
-      <p class = "root-show">--クリックして詳細を見る--</p>
-      <% end %>
-    </li>
+  <% if user_signed_in? %>
+  <div class = "post-contents">
+    <ul class = "post-list" >
+    <% @posts.each do |post| %>
+      <li class = "list">
+        <%= image_tag post.image, class: "post-img" %>
+        <h3 class='post-title'>
+        <span class = "like-box" id="like_<%= post.id %>">
+        <%= render "shared/show_like", post: post %>
+        </span>
+        <%= post.title %>
+        </h3>
+        <%= link_to post_path(post.id) do %>
+        <p class = "root-show">--クリックして詳細を見る--</p>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <% else %>
+  <div class = "post-contents">
+    <ul class = "post-list" >
+    <% @posts.each do |post| %>
+      <li class = "list">
+        <%= image_tag post.image, class: "post-img" %>
+        <h3 class='post-title'>
+        <div class = "like-box" >
+        <i class="fa fa-heart like-btn"></i>
+        <%= post.likes.count %>
+        </div>
+        <%= post.title %>
+        </h3>
+        <p class = "like-info">＊いいねするにはログインが必要です</p>
+        <%= link_to post_path(post.id) do %>
+        <p class = "root-show">--クリックして詳細を見る--</p>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
   <% end %>
-  </ul>
-</div>
 <% end %>
+
+<%= paginate(@posts) %>
 
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>

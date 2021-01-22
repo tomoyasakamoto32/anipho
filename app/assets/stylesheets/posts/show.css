@@ -109,6 +109,14 @@ a.comment-delete {
   float: right;
 }
 
+.root-user {
+  margin-left: 2vw;
+}
+
+a.root-user {
+  color:#6f5949;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;
