@@ -4,7 +4,7 @@ ja:
       post: 投稿
     attributes:
       post:
-        image: ペットの写真
+        images: ペットの写真
         title: 写真のタイトル
         category_id: ペットの種類
         
