@@ -42,11 +42,12 @@
   resize: none;
 }
 
-.post-image {
+.post-image  {
   border: none;
   border-radius: 10px;
   width: auto;
 }
+
 
 img {
   width:24vh;

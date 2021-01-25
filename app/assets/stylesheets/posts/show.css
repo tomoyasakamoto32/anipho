@@ -4,7 +4,7 @@
 }
 
 .show-contents{
-  width:80%;
+  width:60%;
   box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
 }
 .image-content {
@@ -19,8 +19,7 @@
 }
 
 img.show-img {
-  width:92vh;
-  height:55vh;
+  height: 60vh;
 }
 
 .detail-table {
@@ -121,13 +120,11 @@ a.root-user {
   .show-contents {
     width: 100%;
   }
-  img.show-img {
-    width:100%;
-    height:40vh;
-  }
+
   .show-main {
     display:flex;
     justify-content: center;
     height:100%;
   }
+
 }
