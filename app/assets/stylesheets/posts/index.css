@@ -3,7 +3,7 @@ a {
   color:  #a18068;
 }
 
-a.user-nickname, a.logout, a.sign-up, a.header-login, a.title-name {
+a.user-nickname, a.logout, a.sign-up, a.header-login, a.title-name, a.guest-login {
   color:white;
 }
 
@@ -37,6 +37,10 @@ header {
   padding : 0 10px 0 0;
 }
 
+.guest-login {
+  padding : 0 10px 0 0;
+}
+
 .home-content {
   height: 60vh;
   display: flex;
@@ -46,6 +50,10 @@ header {
   background-repeat:  no-repeat;                         /* 画像の繰り返しを指定  */ 
   background-position:center center;             
   background-size: cover;                               /* 画像のサイズを指定    */
+}
+
+.top2 {
+  position:absolute;
 }
 
 .center {
@@ -266,6 +274,15 @@ footer {
   .lists-right li {
     margin-left: 2px;
   }
-  
+
+  .guest-login  {
+    display:none;
+  }
+
+  .post-btn {
+  bottom: 55px;
+  right: 10px;
+  position: fixed;
+  }
 }
 
