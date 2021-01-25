@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :authenticate_user!, except: [:index, :show, :search, :new_guest]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :root_to_path, only: [:edit, :destroy]
 
@@ -47,6 +47,15 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.search(params[:keyword]).page(params[:page]).per(12)
+  end
+
+  def new_guest
+    user = User.find_or_create_by(email: 'guest@example.com') do |user|
+    user.nickname = "ゲスト"
+    user.password = SecureRandom.alphanumeric(10) + [*'a'..'z'].sample(1).join + [*'0'..'9'].sample(1).join
+    end
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
 
