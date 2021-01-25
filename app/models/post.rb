@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :likes
 
   with_options presence: true do
-   validates :image
+   validates :images
    validates :title
    validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
   end

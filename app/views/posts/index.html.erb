@@ -10,7 +10,7 @@
 <%= render "shared/search_form" %>
 
 <% if @posts == [] %>
-  <h2 class = "empty">検索結果はありません</h2>
+  <h2 class = "empty">投稿はまだありません</h2>
 <% else %>
   <% if user_signed_in? %>
   <div class = "post-contents">
@@ -38,7 +38,9 @@
     <ul class = "post-list" >
     <% @posts.each do |post| %>
       <li class = "list">
-        <%= image_tag post.image, class: "post-img" %>
+      <% post.images.each do |image| %>
+        <%= image_tag image, class: "post-img" %>
+      <% end %>
         <h3 class='post-title'>
         <div class = "like-box" >
         <i class="fa fa-heart like-btn"></i>
