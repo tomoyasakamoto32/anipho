@@ -116,6 +116,12 @@ header {
   height: 25vh;
 }
 
+.swiper-slide {
+  width: 40vh;
+  height: 25vh;
+}
+
+
 .post-title {
   color: black;
   white-space: nowrap; 
