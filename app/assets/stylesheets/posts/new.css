@@ -42,17 +42,20 @@
   resize: none;
 }
 
-.post-image {
+.post-image  {
   border: none;
   border-radius: 10px;
   width: auto;
 }
+
 
 img {
   width:24vh;
   height:15vh;
   margin-bottom: 10px;
 }
+
+
 
 @media (max-width: 599px) {
   .posts-contents {

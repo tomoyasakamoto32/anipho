@@ -1,0 +1,16 @@
+<% if post.images.length < 2 %>
+  <% post.images.each do |image| %>
+    <%= image_tag image, class: "post-img"%>
+  <% end %>
+<% else %>
+  <div class="swiper-container">
+    <div class= "swiper-wrapper img-index">
+      <% post.images.each do |image| %>
+        <%= image_tag image, class: "swiper-slide index-img" %>
+      <% end %>
+    </div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+<% end %>

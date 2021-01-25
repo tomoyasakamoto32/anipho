@@ -4,7 +4,7 @@
   <h2 class="posts-parents">投稿内容を入力</h2>
   <%= form_with model: @post, url: posts_path, local: true do |f| %>
   <%= render "shared/error_messages", model: @post %>
-  <div class="img-upload">
+  <div class="img-upload"> 
       <div class="weight-bold-text">
         ペットの写真
         <span class="indispensable">必須</span>
@@ -13,7 +13,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, class:"post-image", id:"message_image" %>
+        <%= f.file_field :images, name: 'post[images][]', class:"post-image", id:"message_image" %>
         <div id="image-list"></div>
       </div>
   </div>

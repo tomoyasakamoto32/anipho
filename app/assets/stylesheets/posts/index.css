@@ -116,6 +116,11 @@ header {
   height: 25vh;
 }
 
+img.index-img {
+  height: 25vh;
+}
+
+
 .post-title {
   color: black;
   white-space: nowrap; 
@@ -147,6 +152,7 @@ header {
   right: 32px;
   position: fixed;
   padding: 15px;
+  z-index: 30;
 }
 
 .post-btn:hover {
@@ -169,6 +175,7 @@ footer {
   position: fixed;
   bottom: 0; 
   width: 100%;
+  z-index: 10;
 }
 
 .copyright {

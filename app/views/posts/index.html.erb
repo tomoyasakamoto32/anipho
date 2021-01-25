@@ -10,19 +10,19 @@
 <%= render "shared/search_form" %>
 
 <% if @posts == [] %>
-  <h2 class = "empty">検索結果はありません</h2>
+  <h2 class = "empty">投稿はまだありません</h2>
 <% else %>
   <% if user_signed_in? %>
   <div class = "post-contents">
     <ul class = "post-list" >
     <% @posts.each do |post| %>
-      <li class = "list">
-        <%= image_tag post.image, class: "post-img" %>
+      <li class = "list" >
+        <%= render "shared/image_contents", post: post %>
         <h3 class='post-title'>
-        <span class = "like-box" id="like_<%= post.id %>">
-        <%= render "shared/show_like", post: post %>
-        </span>
-        <%= post.title %>
+          <span class = "like-box" id="like_<%= post.id %>">
+            <%= render "shared/show_like", post: post %>
+          </span>
+          <%= post.title %>
         </h3>
         <%= link_to post_path(post.id) do %>
         <p class = "root-show">--クリックして詳細を見る--</p>
@@ -36,7 +36,7 @@
     <ul class = "post-list" >
     <% @posts.each do |post| %>
       <li class = "list">
-        <%= image_tag post.image, class: "post-img" %>
+        <%= render "shared/image_contents", post: post %>
         <h3 class='post-title'>
         <div class = "like-box" >
         <i class="fa fa-heart like-btn"></i>

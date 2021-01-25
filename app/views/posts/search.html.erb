@@ -1,11 +1,6 @@
 <%= render "shared/header"%>
 
-<div class = "home-content">
-  <div class = "center">
-   <h2>Anipho</h2>
-   <p>Aniphoはあなたの可愛いペットを動物好きな人達に自慢できるwebアプリケーションです</p>
-  </div>
-</div>
+
 
 <%= render "shared/search_form" %>
 
@@ -21,7 +16,7 @@
   <ul class = "post-list" >
   <% @posts.each do |post| %>
     <li class = "list">
-      <%= image_tag post.image, class: "post-img" %>
+      <%= render "shared/image_contents", post: post %>
       <h3 class='post-title'>
       <span class = "like-box" id="like_<%= post.id %>">
       <%= render "shared/show_like", post: post %>
@@ -40,7 +35,7 @@
   <ul class = "post-list" >
   <% @posts.each do |post| %>
     <li class = "list">
-      <%= image_tag post.image, class: "post-img" %>
+      <%= render "shared/image_contents", post: post %>
       <h3 class='post-title'>
       <div class = "like-box" >
       <i class="fa fa-heart like-btn"></i>

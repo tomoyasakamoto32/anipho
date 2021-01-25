@@ -3,7 +3,16 @@
   <div class = "show-main">
     <div class = "show-contents">
       <div class= "image-content">
-       <%= image_tag @post.image, class: "show-img" %>
+        <div class="swiper-container">
+          <div class = "swiper-wrapper show-img">
+          <% @post.images.each do |image| %>
+            <%= image_tag image, class: "swiper-slide show-img" %>
+          <% end %>
+          </div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-next swiper-button-white"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
       <% if user_signed_in? && current_user.id == @post.user.id %>
       <div class = "btn-contents">
