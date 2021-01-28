@@ -63,7 +63,7 @@
         <div class = "comment-box">
         <h2>気になった投稿にコメントしよう!</h2>
         <% if user_signed_in? %>
-          <%= form_with(model: [@post, @comment], local: true) do |form| %>
+          <%= form_with(model: [@post, @comment], remote: true) do |form| %>
             <%= form.text_area :content, placeholder: "コメントする", rows: "2" %>
             <%= form.submit "コメントを送信する" %>
           <% end %>
@@ -71,16 +71,10 @@
           <strong><p class = "alert">※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p>
           </strong>
         <% end %>
-        <div class="comments">
+        <div class="comments" id="comments">
           <h4>＜コメント一覧＞</h4>
           <% @comments.each do |comment| %>
-            <p>
-              <strong><%= link_to comment.user.nickname, user_path(comment.user.id) ,class: "comment-user"%>：</strong>
-              <%= comment.content %>
-              <% if user_signed_in? && current_user.id == comment.user.id %>
-              <span><%= link_to '[削除する]', post_comment_path(@post.id, comment.id), method: :delete, class: "comment-delete" %></span>
-              <% end %>
-            </p>
+            <%= render "comments/comment", post: @post, comment: comment %>
           <% end %>
         </div>
         </div>
