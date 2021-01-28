@@ -55,6 +55,10 @@ img {
   margin-bottom: 10px;
 }
 
+.count {
+  margin-left:1vw;
+}
+
 
 
 @media (max-width: 599px) {

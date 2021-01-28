@@ -21,14 +21,16 @@
       <div class="weight-bold-text">
         写真のタイトル
         <span class="indispensable">必須</span>
+        <span class="count" id="count_title">0文字</span>
       </div>
-      <%= f.text_area :title, id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40", rows:"1" %>
+      <%= f.text_area :title, id:"post_text", placeholder:"タイトル（必須 40文字まで)", maxlength:"40", rows:"1" %>
   </div>
   <div class="new-posts">
       <div class="weight-bold-text">
         ペットの名前
+        <span class="count" id="count_name">0文字</span>
       </div>
-      <%= f.text_area :animal_name, id:"item-name", placeholder:"ペットの名前（任意 30文字まで)", maxlength:"30",rows: "1" %>
+      <%= f.text_area :animal_name, id:"animal_name", placeholder:"ペットの名前（任意 30文字まで)", maxlength:"30",rows: "1" %>
   </div>
   <div class="new-posts">
       <div class="weight-bold-text">
@@ -40,8 +42,9 @@
   <div class="new-posts">
         <div class="weight-bold-text">
           写真の説明、自由記入欄
+          <span class="count" id="count_explanation">0文字</span>
         </div>
-        <%= f.text_area :explanation, id:"item-info", placeholder:"写真の説明（任意 1,000文字まで）" ,rows:"5" ,maxlength:"1000" %>
+        <%= f.text_area :explanation, id:"explanation", placeholder:"写真の説明（任意 1,000文字まで）" ,rows:"5" ,maxlength:"1000" %>
   </div>
   <div class="post-btn-contents">
       <%= f.submit "投稿する" ,class:"posts-btn" %>
