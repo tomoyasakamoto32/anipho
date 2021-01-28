@@ -20,7 +20,7 @@ RSpec.describe Post, type: :model do
     end
     context '投稿がうまくいかないとき' do
       it 'imageが空だと登録できない' do
-        @post.image = nil
+        @post.images = nil
         @post.valid?
         expect(@post.errors.full_messages).to include('ペットの写真を入力してください')
       end
