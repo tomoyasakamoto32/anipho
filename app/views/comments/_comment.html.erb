@@ -1,0 +1,7 @@
+<p id="comment_<%= comment.id %>">
+  <strong><%= link_to comment.user.nickname, user_path(comment.user.id) ,class: "comment-user"%>：</strong>
+  <%= comment.content %>
+  <% if user_signed_in? && current_user.id == comment.user.id %>
+    <span><%= link_to '[削除する]', post_comment_path(post.id, comment.id), method: :delete, class: "comment-delete", remote: true %></span>
+  <% end %>
+</p>
