@@ -6,8 +6,8 @@
 .contents-login {
   display: flex;
   justify-content: center;
-  margin-top: 130px;
-  margin-bottom: 270px;
+  margin-top: 30px;
+  margin-bottom: 170px;
 }
 
 .login-flash-message {
