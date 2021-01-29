@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   end
 
   def root_to_path
-    if @post.id = nil || current_user.id != @post.user.id
+    if @post.id == nil || current_user.id != @post.user.id
       redirect_to root_path
     end
   end

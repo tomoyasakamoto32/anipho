@@ -33,8 +33,8 @@
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| user            | references | null: false, foreign_key: true |
-| post            | references | null: false, foreign_key: true |
+| user            | integer    | null: false                    |
+| post            | integer    | null: false                    |
 | content         | string     | null: false                    |
 
 ### Association

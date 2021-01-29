@@ -2,10 +2,10 @@
   <%= link_to  destroy_like_path(post.id), class: "like-link", method: :DELETE, remote: true do %>
     <i class="fa fa-heart unlike-btn"></i>
   <% end %>
-  <%= post.likes.count %>
+  <%= post.likes.size %>
 <% else %>
   <%= link_to create_like_path(post.id), class: "like-link", method: :POST, remote: true do %>
     <i class="fa fa-heart like-btn"></i>
   <% end %>
-  <%= post.likes.count %>
+  <%= post.likes.size %>
 <% end %>

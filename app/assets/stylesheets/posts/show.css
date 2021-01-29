@@ -116,6 +116,11 @@ a.root-user {
   color:#6f5949;
 }
 
+.time {
+  font-size: 5%;
+  margin-left: 1vw;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;
