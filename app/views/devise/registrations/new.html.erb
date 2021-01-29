@@ -1,4 +1,8 @@
 <%= render "shared/second_header" %>
+<div class="sns-wrapper">
+  <%= link_to "Facebookで登録", user_facebook_omniauth_authorize_path, method: :post, class: "facebook"%>
+  <%= link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, method: :post, class: "google"%>
+</div>
 <div class="contents">
   <div class="container">
     <h2>登録情報入力</h2>
@@ -15,6 +19,9 @@
         <%= f.email_field :email %>
       </div>
 
+      <%if @sns_id.present? %>
+        <%= hidden_field_tag :sns_auth, true %>
+      <% else %>
       <div class="field">
         <%= f.label :password, "パスワード" %>
         <% if @minimum_password_length %>
@@ -27,6 +34,7 @@
         <%= f.label :password_confirmation, "パスワード(確認)" %><span class="indispensable">必須</span><br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
+      <% end %>
 
       <div class="actions">
         <%= f.submit "新規登録" %>

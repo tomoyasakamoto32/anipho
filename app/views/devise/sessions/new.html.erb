@@ -1,4 +1,8 @@
 <%= render "shared/second_header"%>
+<div class="sns-wrapper">
+  <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post, class: "facebook"%>
+  <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post, class: "google"%>
+</div>
 
 <div class="contents-login row">
   <div class="container">
