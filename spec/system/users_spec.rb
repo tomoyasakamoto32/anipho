@@ -82,4 +82,21 @@ RSpec.describe 'ログイン', type: :system do
       expect(page).to have_no_content('ログイン')
     end
   end
+  context 'ログインができないとき' do
+    it '保存されているユーザーの情報と合致しないとログインができない' do
+      # トップページに移動する
+      visit root_path
+      # トップページにログインページに遷移するボタンがあることを確認する
+      expect(page).to have_content('ログイン')
+      # ログインページに遷移する
+      visit new_user_session_path
+      # 誤ったユーザー情報を入力する
+      fill_in 'メールアドレス', with: ""
+      fill_in 'パスワード', with: ""
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # ログインページへ戻されることを確認する
+      expect(current_path).to eq "/users/sign_in"
+    end
+  end
 end
