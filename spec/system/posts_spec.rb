@@ -107,14 +107,24 @@ RSpec.describe '投稿編集', type: :system do
   context '投稿編集ができないとき' do
     it 'ログインしたユーザーは自分以外の投稿の編集画面には遷移できない' do
       # post1を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @post1.user.email
+      fill_in 'パスワード', with: @post1.user.password
+      find('input[name="commit"]').click
       # post2の詳細ページに遷移する
+      visit post_path(@post2)
       # post2詳細ページに編集ボタンが表示されていないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_post_path(@post2)
     end
     it 'ログインしていないと投稿編集画面には遷移できない' do
       # post1の詳細ページに遷移する
+      visit post_path(@post1)
       # post1の詳細ページに編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_post_path(@post1)
       # post2の詳細ページに遷移する
+      visit post_path(@post2)
       # post2の詳細ページに編集ボタンがないことを確認する
+      expect(page).to have_no_link '編集する', href: edit_post_path(@post2)
     end
   end
 end
