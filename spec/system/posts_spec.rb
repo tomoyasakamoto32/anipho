@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "記事投稿", type: :system do
+RSpec.describe "新規投稿", type: :system do
   before do
     @user = FactoryBot.create(:user)
     @post = FactoryBot.build(:post)
@@ -38,9 +38,14 @@ RSpec.describe "記事投稿", type: :system do
   end
   context '新規投稿ができないとき' do
     it 'ログインしていないと新規投稿ページに遷移できない' do
+      # トップページに遷移する
+      visit root_path
       # 新規投稿ページへのリンクがあることを確認する
+      expect(page).to have_content('投稿する')
       # 新規投稿ページへの遷移するボタンを押す
+      visit new_post_path
       # ログインページに遷移する
+      expect(current_path).to eq new_user_session_path
     end
   end
 end
