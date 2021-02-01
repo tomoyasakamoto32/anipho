@@ -162,14 +162,46 @@ RSpec.describe '投稿削除', type: :system do
   context '投稿削除ができないとき' do
     it 'ログインしたユーザーは自分以外がした投稿を削除できない' do
       # post１を投稿したユーザーでログインする
+      visit new_user_session_path
+      fill_in 'メールアドレス', with: @post1.user.email
+      fill_in 'パスワード', with: @post1.user.password
+      find('input[name="commit"]').click
       # post2の詳細ページに遷移する
+      visit post_path(@post2.id)
       # post2の削除ボタンがないことを確認する
+      expect(page).to have_no_link '削除する', href: post_path(@post2.id)
     end
     it 'ログインしていないと詳細ページに削除ボタンがない' do
       # post1の詳細ページに遷移する
+      visit post_path(@post1.id)
       # post1の削除ボタンがないことを確認する
+      expect(page).to have_no_link '削除する', href: post_path(@post1.id)
       # post2の詳細ページに遷移する
+      visit post_path(@post2.id)
       # post2の削除ボタンがないことを確認する
+      expect(page).to have_no_link '削除する', href: post_path(@post2.id)
     end
+  end
+end
+
+RSpec.describe 'ツイート詳細', type: :system do
+
+  before do
+    @post = FactoryBot.create(:post)
+  end
+  it 'ログインしたユーザーは詳細ページに遷移してコメント投稿欄が表示される' do
+    # ログインする
+    # 投稿に「クリックして詳細を見る」があることを確認する
+    # 詳細ページに遷移する
+    # 詳細ページに投稿の内容が含まれている
+    # コメント投稿用のフォームが存在する
+  end
+  it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
+    # トップページに移動する
+    # 投稿に「クリックして詳細を見る」があることを確認する
+    # 詳細ページに遷移する
+    # 詳細ページに投稿の内容が含まれている
+    # フォームが存在しないことを確認する
+    #「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
   end
 end
