@@ -184,24 +184,46 @@ RSpec.describe '投稿削除', type: :system do
   end
 end
 
-RSpec.describe 'ツイート詳細', type: :system do
+RSpec.describe '投稿詳細', type: :system do
 
   before do
     @post = FactoryBot.create(:post)
   end
   it 'ログインしたユーザーは詳細ページに遷移してコメント投稿欄が表示される' do
     # ログインする
+    visit new_user_session_path
+    fill_in 'メールアドレス', with: @post.user.email
+    fill_in 'パスワード', with: @post.user.password
+    find('input[name="commit"]').click
     # 投稿に「クリックして詳細を見る」があることを確認する
+    expect(page).to have_link 'クリックして詳細を見る', href: post_path(@post.id)
     # 詳細ページに遷移する
+    visit post_path(@post.id)
     # 詳細ページに投稿の内容が含まれている
+    expect(page).to have_selector "img[src$='test_image.png']"
+    expect(page).to have_content(@post.title)
+    expect(page).to have_content(@post.animal_name)
+    expect(page).to have_content("いぬ")
+    expect(page).to have_content(@post.explanation)
     # コメント投稿用のフォームが存在する
+    expect(page).to have_selector 'form'
   end
   it 'ログインしていない状態で詳細ページに遷移できるもののコメント投稿欄が表示されない' do
     # トップページに移動する
+    visit root_path
     # 投稿に「クリックして詳細を見る」があることを確認する
+    expect(page).to have_link 'クリックして詳細を見る', href: post_path(@post.id)
     # 詳細ページに遷移する
+    visit post_path(@post.id)
     # 詳細ページに投稿の内容が含まれている
+    expect(page).to have_selector "img[src$='test_image.png']"
+    expect(page).to have_content(@post.title)
+    expect(page).to have_content(@post.animal_name)
+    expect(page).to have_content("いぬ")
+    expect(page).to have_content(@post.explanation)
     # フォームが存在しないことを確認する
+    expect(page).to have_no_selector 'form'
     #「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
+    expect(page).to have_content('コメントの投稿には新規登録/ログインが必要です')
   end
 end
