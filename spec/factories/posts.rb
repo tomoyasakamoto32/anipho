@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    title         {"test"}
+    title         {Faker::Lorem.sentence(10)}
     explanation   {Faker::Lorem.sentence}
     animal_name   {"sample"}
     category_id   { 2 }
