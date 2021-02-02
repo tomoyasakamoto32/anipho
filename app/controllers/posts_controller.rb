@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search, :new_guest]
+  before_action :authenticate_user!, except: [:index, :show, :search, :new_guest, :category]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :root_to_path, only: [:edit, :destroy]
 
@@ -56,6 +56,11 @@ class PostsController < ApplicationController
     end
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
+  def category
+    @post = Post.find_by(category_id: params[:id])
+    @posts = Post.where(category_id: params[:id]).order('created_at DESC').page(params[:page]).per(12)
   end
 
 
