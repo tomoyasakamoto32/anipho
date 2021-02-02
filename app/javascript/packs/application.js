@@ -10,6 +10,7 @@ require("channels")
 require('./preview')
 require('./swiper')
 require('./count')
+require('./hover')
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
