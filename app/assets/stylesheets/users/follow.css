@@ -1,0 +1,23 @@
+
+.follow-box{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:5vh;
+}
+
+.follow {
+  background-color: #6f5949;
+  color: white;
+  font-size:1.5vw;
+  padding:1vh;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin-bottom:7vh;
+}
+
+.follow:hover {
+  background-color:#a18068;
+}

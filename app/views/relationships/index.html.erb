@@ -1,16 +1,13 @@
 <%= render "shared/header"%>
 
-<div class = "home-content">
-  <div class = "center">
-   <h2>Anipho</h2>
-   <p>Aniphoはあなたの可愛いペットを動物好きな人達に自慢できるwebアプリケーションです</p>
-  </div>
+<h2 class = "user-post">フォロー中のユーザーの投稿</h2>
+
+<div class = "root-box">
+  <%= link_to 'トップに戻る', root_path, class:"root-index" %>
 </div>
 
-<%= render "shared/search_form" %>
-
 <% if @posts == [] %>
-  <h2 class = "empty">投稿はまだありません</h2>
+  <h2 class = "empty">フォロー中のユーザーの投稿はまだありません</h2>
 <% else %>
   <% if user_signed_in? %>
   <div class = "post-contents">
@@ -61,4 +58,4 @@
   <span class='post-btn-text'>投稿する</span>
 <% end %>
 
-<%= render  "shared/footer" %>
+<%= render "shared/footer"%>

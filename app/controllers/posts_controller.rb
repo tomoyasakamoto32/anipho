@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.includes(:user).order('created_at DESC').page(params[:page]).per(12)
+    @posts = Post.with_attached_images.includes(:user, :likes).order('created_at DESC').page(params[:page]).per(12)
   end
 
   def new
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword]).page(params[:page]).per(12)
+    @posts = Post.with_attached_images.includes(:user, :likes).search(params[:keyword]).order('created_at DESC').page(params[:page]).per(12)
   end
 
   def new_guest
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
 
   def category
     @post = Post.find_by(category_id: params[:id])
-    @posts = Post.where(category_id: params[:id]).order('created_at DESC').page(params[:page]).per(12)
+    @posts = Post.with_attached_images.includes(:user, :likes).where(category_id: params[:id]).order('created_at DESC').page(params[:page]).per(12)
   end
 
 
