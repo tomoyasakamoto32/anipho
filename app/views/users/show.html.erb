@@ -2,18 +2,8 @@
 <h2 class = "user-post"><%= @nickname %>さんのマイページ</h2>
 
 <% if user_signed_in? && current_user.id != @user.id %>
-  <div class="follow-box">
-  <% if current_user.following?(@user) %>
-    <%= form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit 'フォロー解除', class: 'btn btn-danger btn-block' %>
-    <% end %>
-  <% else %>
-    <%= form_for(current_user.relationships.build) do |f| %>
-      <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit 'フォローする', class: 'btn btn-primary btn-block' %>
-    <% end %>
-  <% end %>
+  <div class="follow-box" id="follow-ajax">
+    <%= render "shared/follow", user: @user %>
   </div>
 <% end %>
 
