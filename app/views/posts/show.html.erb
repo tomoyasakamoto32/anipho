@@ -9,9 +9,11 @@
             <%= image_tag image, class: "swiper-slide show-img" %>
           <% end %>
           </div>
+          <% if @post.images.length > 1 %>
           <div class="swiper-button-prev swiper-button-white"></div>
           <div class="swiper-button-next swiper-button-white"></div>
           <div class="swiper-pagination"></div>
+          <% end %>
         </div>
       </div>
       <% if user_signed_in? && current_user.id == @post.user.id %>
