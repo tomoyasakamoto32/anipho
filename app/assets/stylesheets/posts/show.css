@@ -121,6 +121,10 @@ a.root-user {
   margin-left: 1vw;
 }
 
+.tags {
+  margin-right: 1vw;
+}
+
 @media (max-width: 599px) {
   .show-contents {
     width: 100%;

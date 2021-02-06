@@ -59,6 +59,10 @@ img {
   margin-left:1vw;
 }
 
+.tag {
+  padding:0 0 2vh 0;
+  width:50%;
+}
 
 
 @media (max-width: 599px) {

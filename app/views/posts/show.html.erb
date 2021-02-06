@@ -60,6 +60,10 @@
           <th class="detail-item">写真の説明、自由記入欄</th>
           <td class="detail-value"><%= @post.explanation %></td>
         </tr>
+        <tr>
+          <th class="detail-item">タグ</th>
+          <td class="detail-value"><% @tags.each do |tag| %><span class="tags"><%= tag.name %></span><% end %></td>
+        </tr>
       </tbody>
       </table>
       <div class="comment-container">
