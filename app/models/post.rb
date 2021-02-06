@@ -5,11 +5,13 @@ class Post < ApplicationRecord
   has_many_attached :images
   has_many :comments, dependent: :destroy
   has_many :likes
+  has_many :post_tag_relations, dependent: :destroy
+  has_many :tags, through: :post_tag_relations
 
   with_options presence: true do
-   validates :images
-   validates :title
-   validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
+    validates :images
+    validates :title
+    validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
   end
 
   def self.search(search)

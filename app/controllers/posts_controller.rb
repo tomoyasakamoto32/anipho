@@ -9,12 +9,13 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = PostsTag.new
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
+    @post = PostsTag.new(post_params)
+    if @post.valid?
+      @post.save
       redirect_to root_path
     else
       render :new
@@ -22,15 +23,20 @@ class PostsController < ApplicationController
   end
 
   def show
+    @tags = @post.tags
     @comment = Comment.new
     @comments = @post.comments.includes(:user)
   end
 
   def edit
+    @form = PostsTag.new(title: @post.title, animal_name: @post.animal_name, category_id: @post.category_id, 
+      explanation: @post.explanation)
   end
 
   def update
-    if @post.update(post_params)
+    @form = PostsTag.new(update_params)
+    if @form.valid?
+      @form.update
       redirect_to root_path
     else
       render :edit
@@ -66,7 +72,11 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :explanation, :animal_name, :category_id, images: []).merge(user_id: current_user.id)
+    params.require(:posts_tag).permit(:title, :explanation, :animal_name, :category_id, :name, images: []).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:posts_tag).permit(:title, :explanation, :animal_name, :category_id, :name, images: []).merge(user_id: current_user.id, post_id: params[:id])
   end
 
   def find_post

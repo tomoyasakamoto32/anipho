@@ -7,6 +7,16 @@ ja:
         images: ペットの写真
         title: 写真のタイトル
         category_id: ペットの種類
+
+  activemodel:
+    models:
+      posts_tag: 投稿 
+    attributes:
+      posts_tag: 
+        images: ペットの写真
+        title: 写真のタイトル
+        category_id: ペットの種類
+        name: タグ
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
