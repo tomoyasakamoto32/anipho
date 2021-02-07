@@ -21,3 +21,14 @@
 .follow:hover {
   background-color:#a18068;
 }
+
+.follow-empty{
+  margin-top:8vh;
+  color:#6f5949;
+}
+
+.follow-count {
+  margin:8vh 0;
+  color:#6f5949;
+  font-size: 1.5vw;
+}

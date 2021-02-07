@@ -1,13 +1,16 @@
 <%= render "shared/header"%>
 
 <h2 class = "user-post">フォロー中のユーザーの投稿</h2>
+<% if user_signed_in? %>
+<h2 class = "follow-count">フォロー<%= current_user.followings.count %>人</h2>
+<% end %>
 
 <div class = "root-box">
   <%= link_to 'トップに戻る', root_path, class:"root-index" %>
 </div>
 
 <% if @posts == [] %>
-  <h2 class = "empty">フォロー中のユーザーの投稿はまだありません</h2>
+  <h2 class = "follow-empty">フォロー中のユーザーの投稿はまだありません</h2>
 <% else %>
   <% if user_signed_in? %>
   <div class = "post-contents">
