@@ -2,6 +2,7 @@ function count (){
   const postText = document.getElementById('post_text');
   const animalName = document.getElementById('animal_name');
   const explanation = document.getElementById('explanation');
+  const tag = document.getElementById('tag');
 
   postText.addEventListener("keyup", () => {
    let titleLength = postText.value.length
@@ -28,6 +29,15 @@ function count (){
       explanationLength = 1000
     }
     countExplanation.innerHTML = `${explanationLength}文字`
+  });
+
+  tag.addEventListener('keyup', () => {
+    let tagLength = tag.value.length
+    let countTag = document.getElementById('count_tag');
+    if (tagLength > 30) {
+      tagLength = 30
+    }
+    countTag.innerHTML = `${tagLength}文字`
   });
 }
 window.addEventListener('load', count);
