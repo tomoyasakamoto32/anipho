@@ -50,10 +50,10 @@
       <div class="weight-bold-text">
         タグ
         <span class="indispensable">必須</span>
+        <span class="count" id="count_tag">0文字</span>
       </div>
-      <%= f.text_area :name, id:"animal_name", placeholder:"タグ(必須 30文字以内) 「#」を先頭につけてください (例 #ペット) ", maxlength:"30",rows: "1" %>
+      <%= f.text_area :name, id:"tag", placeholder:"タグ(必須 30文字以内) 「#」を先頭につけてください (例 #ペット) ", maxlength:"30",rows: "1" %>
   </div>
-  <div class="post-btn-contents">
       <%= f.submit "投稿する" ,class:"posts-btn" %>
   </div>
   <% end %>

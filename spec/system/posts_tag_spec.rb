@@ -4,6 +4,7 @@ RSpec.describe '新規投稿', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @post = FactoryBot.build(:post)
+    @tag = FactoryBot.build(:tag)
   end
 
   context '新規投稿ができるとき' do
@@ -22,12 +23,14 @@ RSpec.describe '新規投稿', type: :system do
       attach_file 'message_image', 'public/images/test_image.png'
       fill_in 'post_text', with: @post.title
       fill_in 'animal_name', with: @post.animal_name
-      select 'ねこ', from: 'post[category_id]'
+      select 'ねこ', from: 'posts_tag[category_id]'
       fill_in 'explanation', with: @post.explanation
-      # 投稿するとPostモデルのカウントが1上がることを確認する
+      fill_in 'tag', with: @tag.name
+      # 投稿するとPostモデルとTagモデルのカウントが1上がることを確認する
       expect  do
         find('input[name="commit"]').click
       end.to change { Post.count }.by(1)
+      change {Tag.count}.by(1)
       # トップページに遷移することを確認する
       expect(current_path).to eq root_path
       # トップページには先ほど投稿した内容が存在することを確認する（画像)
@@ -54,6 +57,7 @@ RSpec.describe '投稿編集', type: :system do
   before do
     @post1 = FactoryBot.create(:post)
     @post2 = FactoryBot.create(:post)
+    @tag = FactoryBot.create(:tag)
   end
 
   context '投稿編集ができるとき' do
@@ -77,7 +81,7 @@ RSpec.describe '投稿編集', type: :system do
         find('#animal_name').value
       ).to eq @post1.animal_name
       expect(
-        find('#post_category_id').value
+        find('#posts_tag_category_id').value
       ).to eq @post1.category_id.to_s
       expect(
         find('#explanation').value
@@ -86,12 +90,15 @@ RSpec.describe '投稿編集', type: :system do
       attach_file 'message_image', 'public/images/header.png'
       fill_in 'post_text', with: "#{@post1.title}編集"
       fill_in 'animal_name', with: "#{@post1.animal_name}編集"
-      select 'いぬ', from: 'post[category_id]'
+      select 'いぬ', from: 'posts_tag[category_id]'
       fill_in 'explanation', with: "#{@post1.explanation}編集"
+      fill_in 'tag', with: "#{@tag.name}編集"
       # 編集してもPostモデルのカウントが上がらないことを確認する
       expect  do
         find('input[name="commit"]').click
       end.to change { Post.count }.by(0)
+      # 編集した場合でもTagモデルのカウントは上がることを確認する
+      change { Tag.count }.by(1)
       # 投稿詳細ページに遷移する
       visit post_path(@post1)
       # 投稿詳細ページに先ほどの変更が反映された投稿が存在することを確認する(画像)
@@ -149,6 +156,8 @@ RSpec.describe '投稿削除', type: :system do
       expect do
         find_link('削除する', href: post_path(@post1.id)).click
       end.to change { Post.count }.by(-1)
+      # 投稿を削除してもタグのレコードは変わらないことを確認する
+      change { Tag.count }.by(0)
       # トップページに遷移する
       visit root_path
       # トップページにはpost1の内容が存在しないことを確認する（画像)
