@@ -11,11 +11,11 @@ class Post < ApplicationRecord
   with_options presence: true do
     validates :images
     validates :title
-    validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
+    validates :category_id, numericality: { other_than: 1, message: 'は--以外から選んでください' }
   end
 
   def self.search(search)
-    if search != ""
+    if search != ''
       Post.where(['title LIKE(?) OR explanation LIKE(?) OR animal_name LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
     else
       Post.includes(:user).order('created_at DESC')

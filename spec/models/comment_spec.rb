@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   before do
-    @comment =  FactoryBot.build(:comment)
+    @comment = FactoryBot.build(:comment)
   end
 
   describe 'コメント投稿' do
@@ -13,7 +13,7 @@ RSpec.describe Comment, type: :model do
     end
     context 'コメント投稿がうまくいかないとき' do
       it 'contentが空だと登録できない' do
-        @comment.content = ""
+        @comment.content = ''
         @comment.valid?
         expect(@comment.errors.full_messages).to include('Contentを入力してください')
       end

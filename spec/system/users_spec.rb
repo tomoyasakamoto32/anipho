@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "ユーザー新規登録", type: :system do
+RSpec.describe 'ユーザー新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
 
-  context 'ユーザー新規登録ができるとき' do 
+  context 'ユーザー新規登録ができるとき' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
       # トップページに移動する
       visit root_path
@@ -19,9 +19,9 @@ RSpec.describe "ユーザー新規登録", type: :system do
       fill_in 'パスワード', with: @user.password
       fill_in 'パスワード(確認)', with: @user.password_confirmation
       # 新規登録を押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change {User.count}.by(1)
+      end.to change { User.count }.by(1)
       # 新規登録ページへ遷移したことを確認する
       expect(current_path).to eq root_path
       # トップページにログアウトボタンやユーザーの名前が表示されることを確認する
@@ -41,16 +41,16 @@ RSpec.describe "ユーザー新規登録", type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'ニックネーム', with: ""
-      fill_in 'メールアドレス', with: ""
-      fill_in 'パスワード', with: ""
-      fill_in 'パスワード(確認)', with: ""
+      fill_in 'ニックネーム', with: ''
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード', with: ''
+      fill_in 'パスワード(確認)', with: ''
       # サインアップボタンを押してもユーザーモデルのカウントが上がらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change {User.count}.by(0)
+      end.to change { User.count }.by(0)
       # 新規登録ページへ戻ってくることを確認する
-      expect(current_path).to eq "/users"
+      expect(current_path).to eq '/users'
     end
   end
 end
@@ -71,7 +71,7 @@ RSpec.describe 'ログイン', type: :system do
       fill_in 'メールアドレス', with: @user.email
       fill_in 'パスワード', with: @user.password
       # ログインボタンを押す
-        find('input[name="commit"]').click
+      find('input[name="commit"]').click
       # トップページに遷移する
       visit root_path
       # トップページにログアウトボタンやユーザーの名前が表示されることを確認する
@@ -91,12 +91,12 @@ RSpec.describe 'ログイン', type: :system do
       # ログインページに遷移する
       visit new_user_session_path
       # 誤ったユーザー情報を入力する
-      fill_in 'メールアドレス', with: ""
-      fill_in 'パスワード', with: ""
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード', with: ''
       # ログインボタンを押す
       find('input[name="commit"]').click
       # ログインページへ戻されることを確認する
-      expect(current_path).to eq "/users/sign_in"
+      expect(current_path).to eq '/users/sign_in'
     end
   end
 end

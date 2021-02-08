@@ -4,17 +4,17 @@ RSpec.describe Post, type: :model do
   before do
     @post = FactoryBot.build(:post)
   end
-  describe "新規投稿" do
+  describe '新規投稿' do
     context '投稿がうまくいくとき' do
       it 'imageとtitleとexplanationとanimal_nameとcategory_idが存在すれば投稿できる' do
         expect(@post).to be_valid
       end
       it 'explanationが空でも投稿できる' do
-        @post.explanation = ""
+        @post.explanation = ''
         expect(@post).to be_valid
       end
       it 'animal_nameが空でも投稿できる' do
-        @post.animal_name = ""
+        @post.animal_name = ''
         expect(@post).to be_valid
       end
     end
@@ -25,7 +25,7 @@ RSpec.describe Post, type: :model do
         expect(@post.errors.full_messages).to include('ペットの写真を入力してください')
       end
       it 'titleが空だと投稿できない' do
-        @post.title = ""
+        @post.title = ''
         @post.valid?
         expect(@post.errors.full_messages).to include('写真のタイトルを入力してください')
       end

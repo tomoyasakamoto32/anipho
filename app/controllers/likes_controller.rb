@@ -10,7 +10,8 @@ class LikesController < ApplicationController
     Like.find_by(user_id: current_user.id, post_id: params[:id]).destroy
   end
 
-  private 
+  private
+
   def like_params
     @post = Post.find(params[:id])
   end

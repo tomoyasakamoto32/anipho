@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "新規投稿", type: :system do
+RSpec.describe '新規投稿', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @post = FactoryBot.build(:post)
   end
-  
+
   context '新規投稿ができるとき' do
     it 'ログインしたユーザーは新規投稿できる' do
       # ログインする
@@ -19,15 +19,15 @@ RSpec.describe "新規投稿", type: :system do
       # 新規投稿ページに移動する
       visit new_post_path
       # フォームに情報を入力する
-      attach_file 'message_image', "public/images/test_image.png"
+      attach_file 'message_image', 'public/images/test_image.png'
       fill_in 'post_text', with: @post.title
       fill_in 'animal_name', with: @post.animal_name
       select 'ねこ', from: 'post[category_id]'
       fill_in 'explanation', with: @post.explanation
       # 投稿するとPostモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change {Post.count}.by(1)
+      end.to change { Post.count }.by(1)
       # トップページに遷移することを確認する
       expect(current_path).to eq root_path
       # トップページには先ほど投稿した内容が存在することを確認する（画像)
@@ -51,7 +51,6 @@ RSpec.describe "新規投稿", type: :system do
 end
 
 RSpec.describe '投稿編集', type: :system do
-
   before do
     @post1 = FactoryBot.create(:post)
     @post2 = FactoryBot.create(:post)
@@ -79,20 +78,20 @@ RSpec.describe '投稿編集', type: :system do
       ).to eq @post1.animal_name
       expect(
         find('#post_category_id').value
-      ).to eq "#{@post1.category_id}"
+      ).to eq @post1.category_id.to_s
       expect(
         find('#explanation').value
       ).to eq @post1.explanation
       # 投稿内容を編集する
-      attach_file 'message_image', "public/images/header.png"
+      attach_file 'message_image', 'public/images/header.png'
       fill_in 'post_text', with: "#{@post1.title}編集"
       fill_in 'animal_name', with: "#{@post1.animal_name}編集"
       select 'いぬ', from: 'post[category_id]'
       fill_in 'explanation', with: "#{@post1.explanation}編集"
       # 編集してもPostモデルのカウントが上がらないことを確認する
-      expect{
+      expect  do
         find('input[name="commit"]').click
-      }.to change { Post.count }.by(0)
+      end.to change { Post.count }.by(0)
       # 投稿詳細ページに遷移する
       visit post_path(@post1)
       # 投稿詳細ページに先ほどの変更が反映された投稿が存在することを確認する(画像)
@@ -100,7 +99,7 @@ RSpec.describe '投稿編集', type: :system do
       # 投稿詳細ページに先ほどの変更が反映された投稿が存在することを確認する(タイトル、ペットの名前、カテゴリー、説明)
       expect(page).to have_content("#{@post1.title}編集")
       expect(page).to have_content("#{@post1.animal_name}編集")
-      expect(page).to have_content("いぬ")
+      expect(page).to have_content('いぬ')
       expect(page).to have_content("#{@post1.explanation}編集")
     end
   end
@@ -130,7 +129,6 @@ RSpec.describe '投稿編集', type: :system do
 end
 
 RSpec.describe '投稿削除', type: :system do
-
   before do
     @post1 = FactoryBot.create(:post)
     @post2 = FactoryBot.create(:post)
@@ -148,9 +146,9 @@ RSpec.describe '投稿削除', type: :system do
       # 削除ボタンがあることを確認する
       expect(page).to have_link '削除する', href: post_path(@post1)
       # 投稿を削除するとレコードの数が1減ることを確認する
-      expect{
+      expect do
         find_link('削除する', href: post_path(@post1.id)).click
-      }.to change {Post.count}.by(-1)
+      end.to change { Post.count }.by(-1)
       # トップページに遷移する
       visit root_path
       # トップページにはpost1の内容が存在しないことを確認する（画像)
@@ -185,7 +183,6 @@ RSpec.describe '投稿削除', type: :system do
 end
 
 RSpec.describe '投稿詳細', type: :system do
-
   before do
     @post = FactoryBot.create(:post)
   end
@@ -203,7 +200,7 @@ RSpec.describe '投稿詳細', type: :system do
     expect(page).to have_selector "img[src$='test_image.png']"
     expect(page).to have_content(@post.title)
     expect(page).to have_content(@post.animal_name)
-    expect(page).to have_content("いぬ")
+    expect(page).to have_content('いぬ')
     expect(page).to have_content(@post.explanation)
     # コメント投稿用のフォームが存在する
     expect(page).to have_selector 'form'
@@ -219,11 +216,11 @@ RSpec.describe '投稿詳細', type: :system do
     expect(page).to have_selector "img[src$='test_image.png']"
     expect(page).to have_content(@post.title)
     expect(page).to have_content(@post.animal_name)
-    expect(page).to have_content("いぬ")
+    expect(page).to have_content('いぬ')
     expect(page).to have_content(@post.explanation)
     # フォームが存在しないことを確認する
     expect(page).to have_no_selector 'form'
-    #「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
+    # 「コメントの投稿には新規登録/ログインが必要です」が表示されていることを確認する
     expect(page).to have_content('コメントの投稿には新規登録/ログインが必要です')
   end
 end

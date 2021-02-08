@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "コメント投稿", type: :system do
+RSpec.describe 'コメント投稿', type: :system do
   before do
     @post = FactoryBot.create(:post)
     @comment = Faker::Lorem.sentence
@@ -19,21 +19,20 @@ RSpec.describe "コメント投稿", type: :system do
     fill_in 'comment_content', with: @comment
     # コメントを送信すると、Commentモデルのカウントが1上がることを確認する
     find('input[name="commit"]').click
-    expect{
+    expect  do
       visit current_path
-    }.to change {Comment.count}.by(1)
+    end.to change { Comment.count }.by(1)
     # 詳細ページ上に先ほどのコメント内容が含まれていることを確認する
     expect(page).to have_content(@comment)
   end
 end
 
-RSpec.describe "コメント削除", type: :system do
-
+RSpec.describe 'コメント削除', type: :system do
   before do
     @comment1 = FactoryBot.create(:comment)
     @comment2 = FactoryBot.create(:comment)
   end
-  
+
   context 'コメント削除ができるとき' do
     it 'ログインしたユーザーは詳細ページで、自分のコメントは削除できる' do
       # comment1を投稿したユーザーでログインする
@@ -48,9 +47,9 @@ RSpec.describe "コメント削除", type: :system do
       expect(page).to have_link '削除する', href: post_comment_path(@comment1.post.id, @comment1.id)
       # コメントを削除するとレコードの数が1減ることを確認する
       find_link('削除する', href: post_comment_path(@comment1.post.id, @comment1.id)).click
-      expect{
+      expect  do
         visit current_path
-      }.to change {Comment.count}.by(-1)
+      end.to change { Comment.count }.by(-1)
       # 詳細ページに削除したコメントがないことを確認する
       expect(page).to have_no_content(@comment1)
     end

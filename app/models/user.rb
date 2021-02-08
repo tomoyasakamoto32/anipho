@@ -13,11 +13,10 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
-  
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates :nickname, presence: true
-  validates :password, format: { with: PASSWORD_REGEX}
-  
+  validates :password, format: { with: PASSWORD_REGEX }
+
   def liked_by?(post_id)
     likes.where(post_id: post_id).exists?
   end
@@ -35,20 +34,16 @@ class User < ApplicationRecord
     { user: user, sns: sns }
   end
 
-
   def follow(other_user)
-    unless self == other_user
-      self.relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)
-    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship = relationships.find_by(follow_id: other_user.id)
     relationship.destroy if relationship
   end
 
   def following?(other_user)
-    self.followings.include?(other_user)
+    followings.include?(other_user)
   end
-  
 end

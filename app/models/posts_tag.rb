@@ -6,11 +6,12 @@ class PostsTag
     validates :images
     validates :title
     validates :name
-    validates :category_id, numericality: { other_than: 1 , message: "は--以外から選んでください"} 
+    validates :category_id, numericality: { other_than: 1, message: 'は--以外から選んでください' }
   end
 
   def save
-    post = Post.create(title: title, explanation: explanation, category_id: category_id, animal_name: animal_name, user_id: user_id, images: images)
+    post = Post.create(title: title, explanation: explanation, category_id: category_id, animal_name: animal_name,
+                       user_id: user_id, images: images)
     tag = Tag.where(name: name).first_or_initialize
     tag.save
 
@@ -19,11 +20,12 @@ class PostsTag
 
   def update
     @post = Post.where(id: post_id)
-    post = @post.update(title: title, explanation: explanation, category_id: category_id, animal_name: animal_name, user_id: user_id, images: images)
+    post = @post.update(title: title, explanation: explanation, category_id: category_id, animal_name: animal_name,
+                        user_id: user_id, images: images)
     tag = Tag.where(name: name).first_or_initialize
     tag.save
-    
-    map = PostTagRelation.where(post_id: post_id )
+
+    map = PostTagRelation.where(post_id: post_id)
     map.update(post_id: post_id, tag_id: tag.id)
   end
 end
