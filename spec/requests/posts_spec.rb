@@ -31,12 +31,23 @@ describe PostsController, type: :request do
 
   describe 'GET #show' do
     it 'showアクションにリクエストすると正常にレスポンスが返ってくる' do 
+      get post_path(@post.id)
+      expect(response.status).to eq 200
     end
     it 'showアクションにリクエストするとレスポンスに投稿済みの情報が存在する' do 
+      get post_path(@post.id)
+      expect(response.body).to include(@post.title)
+      expect(response.body).to include(@post.animal_name)
+      expect(response.body).to include(@post.category.name)
+      expect(response.body).to include(@post.explanation)
     end
     it 'showアクションにリクエストするとレスポンスに投稿済みの画像が存在する' do 
+      get post_path(@post.id)
+      expect(response.body).to include('test_image.png')
     end
     it 'showアクションにリクエストするとレスポンスにコメント一覧表示部分が存在する' do 
+      get post_path(@post.id)
+      expect(response.body).to include('コメント一覧')
     end
   end 
 end
