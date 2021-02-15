@@ -2,7 +2,8 @@
 
 ### アプリケーション名
 Anipho
-![Uploading スクリーンショット 2021-02-15 21.49.54.png…]()
+
+<img width="1792" alt="スクリーンショット 2021-02-15 21 49 54" src="https://user-images.githubusercontent.com/76158766/107950572-39e82180-6fda-11eb-81e2-5d32a11172af.png">
 
 ### アプリケーション概要(コンセプト)
 飼い主が、写真と文章を通して、手軽にペットを自慢できる記事投稿型のwebサービスです。
@@ -66,7 +67,7 @@ https://anipho-app.com/
 
 # DB設計
 ## ER図
-![ER図(draw.ioで作成)](/Users/tomoyasakamoto/projects/anipho/anipho.dio)
+![ER図(draw.ioで作成)](/anipho/anipho.dio)
 ## users テーブル
 
 | Column             | Type   | Options                   |
