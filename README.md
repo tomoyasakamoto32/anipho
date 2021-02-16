@@ -70,7 +70,7 @@ https://anipho-app.com/
 # DB設計
 
 ## ER図
-<img width="821" alt="スクリーンショット 2021-02-15 22 32 10" src="https://user-images.githubusercontent.com/76158766/107952873-ae708f80-6fdd-11eb-9b15-fa666d77796b.png">
+<img width="825" alt="スクリーンショット 2021-02-16 14 53 13" src="https://user-images.githubusercontent.com/76158766/108023908-e5d74e80-7066-11eb-90af-97dc4776a17d.png">
 
 ## users テーブル
 
