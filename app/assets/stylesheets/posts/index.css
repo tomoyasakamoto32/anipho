@@ -274,6 +274,10 @@ footer {
   display:none;
 }
 
+.responsive-hidden {
+  display:none;
+}
+
 
 @media (max-width: 599px) {
 
@@ -323,6 +327,11 @@ footer {
 
   .user-post {
     font-size:7vw;
+  }
+
+  .responsive-hidden {
+    display:inline;
+    margin: 1%;
   }
 }
 

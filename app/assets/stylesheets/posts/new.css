@@ -43,9 +43,8 @@
 }
 
 .post-image  {
-  border: none;
   border-radius: 10px;
-  width: auto;
+  width: 100%;
 }
 
 
