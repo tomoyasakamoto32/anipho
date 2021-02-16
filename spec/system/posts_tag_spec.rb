@@ -30,7 +30,7 @@ RSpec.describe '新規投稿', type: :system do
       expect  do
         find('input[name="commit"]').click
       end.to change { Post.count }.by(1)
-      change {Tag.count}.by(1)
+      change { Tag.count }.by(1)
       # トップページに遷移することを確認する
       expect(current_path).to eq root_path
       # トップページには先ほど投稿した内容が存在することを確認する（画像)
