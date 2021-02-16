@@ -277,6 +277,10 @@ footer {
 
 @media (max-width: 599px) {
 
+  .category-list {
+    display:none;
+  }
+
   .contents {
     height:100%;
   }
@@ -315,6 +319,10 @@ footer {
   bottom: 55px;
   right: 10px;
   position: fixed;
+  }
+
+  .user-post {
+    font-size:7vw;
   }
 }
 

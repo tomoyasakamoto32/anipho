@@ -32,3 +32,14 @@
   color:#6f5949;
   font-size: 1.5vw;
 }
+@media (max-width: 599px) {
+  .follow-count {
+    font-size: 5vw;
+  }
+  .follow-box{
+    margin-top: 8vh;
+  }
+  .follow {
+    font-size: 3vw;
+  }
+}
