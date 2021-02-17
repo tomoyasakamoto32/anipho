@@ -1,28 +1,20 @@
-<%= render "shared/header"%>
-
-<h2 class = "user-post">フォロー中のユーザーの投稿</h2>
-<% if user_signed_in? %>
-<h2 class = "follow-count">フォロー<%= current_user.followings.count %>人</h2>
-<% end %>
-
+<h2 class = "user-post"><%= nickname %>さんの投稿一覧</h2>
 <div class = "root-box">
   <%= link_to 'トップに戻る', root_path, class:"root-index" %>
 </div>
 
-<% if @posts == [] %>
-  <h2 class = "follow-empty">フォロー中のユーザーの投稿はまだありません</h2>
-<% else %>
-  <% if user_signed_in? %>
+<% if user_signed_in? %>
   <div class = "post-contents">
+  <% if posts != [] %>
     <ul class = "post-list" >
-    <% @posts.each do |post| %>
-      <li class = "list" >
+    <% posts.each do |post| %>
+      <li class = "list">
         <%= render "shared/image_contents", post: post %>
         <h3 class='post-title'>
-          <span class = "like-box" id="like_<%= post.id %>">
-            <%= render "shared/show_like", post: post %>
-          </span>
-          <%= post.title %>
+        <span class = "like-box" id="like_<%= post.id %>">
+        <%= render "shared/show_like", post: post %>
+        </span>
+        <%= post.title %>
         </h3>
         <%= link_to post_path(post.id) do %>
         <p class = "root-show">--クリックして詳細を見る--</p>
@@ -30,17 +22,20 @@
       </li>
     <% end %>
     </ul>
-  </div>
   <% else %>
+    <h2 class = "user-post"><%= nickname %>さんの投稿はまだありません</h2>
+  <% end %>
+  </div>
+<% else %>
   <div class = "post-contents">
     <ul class = "post-list" >
-    <% @posts.each do |post| %>
+    <% posts.each do |post| %>
       <li class = "list">
         <%= render "shared/image_contents", post: post %>
         <h3 class='post-title'>
         <div class = "like-box" >
         <i class="fa fa-heart like-btn"></i>
-        <%= post.likes.size %>
+        <%= post.likes.count %>
         </div>
         <%= post.title %>
         </h3>
@@ -52,13 +47,9 @@
     <% end %>
     </ul>
   </div>
-  <% end %>
 <% end %>
 
-<%= paginate(@posts) %>
 
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>
 <% end %>
-
-<%= render "shared/footer"%>
