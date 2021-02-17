@@ -11,9 +11,10 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :users, only: :show
+  resources :users, only: [:show, :index]
+  resources :relationships, only: [:create, :destroy, :index]
   post 'like/:id' => 'likes#create', as: 'create_like'
   delete 'like/:id' => 'likes#destroy', as: 'destroy_like'
+  get 'likes' => 'likes#index', as:  'likes'
   get '/posts/category/:id' => "posts#category", as: 'post_category'
-  resources :relationships, only: [:create, :destroy, :index]
 end

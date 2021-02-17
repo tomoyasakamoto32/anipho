@@ -1,4 +1,12 @@
 
+.change-box{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:100vw;
+  background-color: #6f5949;
+}
+
 .follow-box{
   display:flex;
   align-items: center;
@@ -6,16 +14,29 @@
   margin-bottom:5vh;
 }
 
-.follow {
+.change {
   background-color: #6f5949;
   color: white;
   font-size:1.5vw;
   padding:1vh;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  margin-bottom:7vh;
+  border-right:1px solid white;
+  border-left:1px solid white;
+}
+
+.follow {
+    color: white;
+    font-size:1.5vw;
+    padding:1vh;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-bottom:7vh;
+    width:20%;
+}
+
+.change:hover {
+  background-color:#a18068;
 }
 
 .follow:hover {
@@ -27,11 +48,12 @@
   color:#6f5949;
 }
 
-.follow-count {
-  margin:8vh 0;
-  color:#6f5949;
-  font-size: 1.5vw;
+.follow-count{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 @media (max-width: 599px) {
   .follow-count {
     font-size: 5vw;

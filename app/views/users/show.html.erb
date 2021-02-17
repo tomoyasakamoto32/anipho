@@ -7,13 +7,19 @@
   </div>
 <% end %>
 
-<div class="follow-box">
+<div class="change-box">
 <% if user_signed_in? %>
-  <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"follow" %>
+  <% if current_user.id == @user.id %>
+    <%= link_to '自分の投稿を見る', users_path, class: "change", remote: true %>
+    <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"change", remote: true %>
+    <%= link_to 'いいねした投稿を見る', likes_path, class: "change", remote: true %>
+  <% else %>
+    <%= link_to 'マイページでフォローしたユーザーの投稿を見る', user_path(current_user.id), class: "change" %>
+  <% end %>
 <% end %>
 </div>
 
-
+<div id="ajax">
 <h2 class = "user-post"><%= @nickname %>さんの投稿一覧</h2>
 <div class = "root-box">
   <%= link_to 'トップに戻る', root_path, class:"root-index" %>
@@ -66,10 +72,11 @@
 <% end %>
 
 
+
 <%= paginate(@posts) %>
 
 <%= link_to new_post_path, class: 'post-btn' do %>
   <span class='post-btn-text'>投稿する</span>
 <% end %>
-
+</div>
 <%= render "shared/footer"%>
