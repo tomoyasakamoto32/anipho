@@ -20,8 +20,8 @@
       <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"change" %>
       <%= link_to 'いいねした投稿を見る', likes_path, class: "change" %>
     <% else %>
-      <%= link_to 'マイページでフォローしたユーザーの投稿を見る', user_path(current_user.id), class: "change" %>
       <%= link_to user_path(@user.id), class: "change" do %><span><%= @nickname %>さんの投稿</span><% end %>
+      <%= link_to 'マイページでフォローしたユーザーの投稿を見る', user_path(current_user.id), class: "change" %>
     <% end %>
   </div>
 <% end %>
