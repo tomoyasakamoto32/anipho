@@ -1,0 +1,11 @@
+<h2 class="user-post">フォローされているユーザー</h2>
+
+<div class="user-box">
+  <div class="user-index">
+    <% followers.each do |follower| %>
+      <div class="user-in">
+        <%= link_to user_path(follower.id), class: "follow-name" do%><%= follower.nickname %><% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

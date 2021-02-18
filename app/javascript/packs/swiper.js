@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+function swiper(){
   var mySwiper = new Swiper('.swiper-container', {
     // Optional parameters
     loop: true,
@@ -16,4 +16,5 @@ document.addEventListener("DOMContentLoaded", function(){
   
     // And if we need scrollbar
   })
-});
+};
+addEventListener("DOMContentLoaded", swiper)

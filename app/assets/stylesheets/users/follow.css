@@ -54,6 +54,55 @@
   align-items: center;
 }
 
+.user-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top:solid 1px #6f5949;
+  padding-top:5vh;
+}
+
+.follow-name {
+  font-size: 1.5vw;
+}
+
+.user-in{
+  display:block;
+  text-align: center;
+  margin-top:1.5vh;
+}
+
+.follower{
+  margin: 1vh 1vw 5vh 1vw;
+  font-size:2vh;
+}
+
+.follow-contents{
+  width:10%;
+}
+
+.changing{
+  color: white;
+  font-size:1.5vw;
+  padding:1vh;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #6f5949;
+}
+
+.changing:hover{
+  background-color: #a18068;
+}
+
+.changing-box{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width:100vw;
+}
+
 @media (max-width: 599px) {
   .follow-count {
     font-size: 5vw;
