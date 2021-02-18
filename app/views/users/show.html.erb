@@ -1,23 +1,30 @@
 <%= render "shared/header"%>
 <h2 class = "user-post"><%= @nickname %>さんのマイページ</h2>
 
-<% if user_signed_in? && current_user.id != @user.id %>
-  <div class="follow-box" id="follow-ajax">
-    <%= render "shared/follow", user: @user %>
+<% if user_signed_in? %>
+  <% if current_user.id != @user.id %>
+    <div class="follow-box" id="follow-ajax">
+      <%= render "shared/follow", user: @user %>
+    </div>
+  <% else %>
+    <div class= "follow-count">
+      <%= link_to followings_path(@user.id), class: "follower", remote: true do %><span>フォロー  <%= @user.followings.size %><% end %>
+      <%= link_to followers_path(@user.id), class: "follower", remote: true do %><span>フォロワー  <%= @user.followers.size %><% end %>
+    </div>
+  <% end %>
+
+
+  <div class="change-box">
+    <% if current_user.id == @user.id %>
+      <%= link_to '自分の投稿を見る', users_path, class: "change", id: "change" %>
+      <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"change" %>
+      <%= link_to 'いいねした投稿を見る', likes_path, class: "change" %>
+    <% else %>
+      <%= link_to 'マイページでフォローしたユーザーの投稿を見る', user_path(current_user.id), class: "change" %>
+      <%= link_to user_path(@user.id), class: "change" do %><span><%= @nickname %>さんの投稿</span><% end %>
+    <% end %>
   </div>
 <% end %>
-
-<div class="change-box">
-<% if user_signed_in? %>
-  <% if current_user.id == @user.id %>
-    <%= link_to '自分の投稿を見る', users_path, class: "change", remote: true %>
-    <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"change", remote: true %>
-    <%= link_to 'いいねした投稿を見る', likes_path, class: "change", remote: true %>
-  <% else %>
-    <%= link_to 'マイページでフォローしたユーザーの投稿を見る', user_path(current_user.id), class: "change" %>
-  <% end %>
-<% end %>
-</div>
 
 <div id="ajax">
 <h2 class = "user-post"><%= @nickname %>さんの投稿一覧</h2>

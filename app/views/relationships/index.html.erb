@@ -1,0 +1,52 @@
+<%= render "shared/header"%>
+<h2 class = "user-post"><%= current_user.nickname %>さんのマイページ</h2>
+
+  <div class= "follow-count">
+    <%= link_to followings_path(current_user.id), class: "follower", remote: true do %><span>フォロー  <%= current_user.followings.size %><% end %>
+    <%= link_to followers_path(current_user.id), class: "follower", remote: true do %><span>フォロワー  <%= current_user.followers.size %><% end %>
+  </div>
+
+<div class="change-box">
+  <% if user_signed_in? %>
+    <%= link_to '自分の投稿を見る', users_path, class: "change", id: "change" %>
+    <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"change" %>
+    <%= link_to 'いいねした投稿を見る', likes_path, class: "change" %>
+  <% end %>
+</div>
+
+<div id="ajax">
+<h2 class = "user-post">フォローしてるユーザーの投稿一覧</h2>
+<div class = "root-box">
+  <%= link_to 'トップに戻る', root_path, class:"root-index" %>
+</div>
+
+<div class = "post-contents">
+  <% if @posts != [] %>
+    <ul class = "post-list" >
+    <% @posts.each do |post| %>
+      <li class = "list">
+        <%= render "shared/image_contents", post: post %>
+        <h3 class='post-title'>
+        <span class = "like-box" id="like_<%= post.id %>">
+        <%= render "shared/show_like", post: post %>
+        </span>
+        <%= post.title %>
+        </h3>
+        <%= link_to post_path(post.id) do %>
+        <p class = "root-show">--クリックして詳細を見る--</p>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  <% else %>
+    <h2 class = "user-post"><%= @nickname %>さんの投稿はまだありません</h2>
+  <% end %>
+</div>
+
+<%= paginate(@posts) %>
+
+<%= link_to new_post_path, class: 'post-btn' do %>
+  <span class='post-btn-text'>投稿する</span>
+<% end %>
+</div>
+<%= render "shared/footer"%>
