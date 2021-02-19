@@ -25,9 +25,23 @@
 <div class = "post-contents">
   <% if @likes != [] %>
     <ul class = "post-list" >
-    <% @posts.each do |post| %>
+    <% @likes.each do |like| %>
+      <% post = like.post %>
       <li class = "list">
-        <%= render "shared/image_contents", post: post %>
+        <% if post.images.length < 2 %>
+          <%= image_tag post.images[0], class: "post-img"%>
+        <% else %>
+          <div class="swiper-container">
+            <div class= "swiper-wrapper img-index">
+              <% post.images.each do |image| %>
+                <%= image_tag image, class: "swiper-slide index-img" %>
+              <% end %>
+            </div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        <% end %>
         <h3 class='post-title'>
         <span class = "like-box" id="like_<%= post.id %>">
         <%= render "shared/show_like", post: post %>

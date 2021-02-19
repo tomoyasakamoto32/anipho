@@ -12,7 +12,6 @@ class LikesController < ApplicationController
 
   def index
     @likes = Like.where(user_id: current_user.id).order('created_at DESC').includes(:post)
-    @posts = like_post(@likes)
   end
 
   private
@@ -21,11 +20,4 @@ class LikesController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def like_post(likes)
-    @post = []
-    likes.each do |like|
-      @post << like.post
-    end
-    @post
-  end
 end
