@@ -10,7 +10,6 @@
   <% if user_signed_in? %>
     <%= link_to '自分の投稿を見る', users_path, class: "change", id: "change" %>
     <%= link_to 'フォローしてるユーザーの投稿を見る', relationships_path, class:"change" %>
-    <%= link_to 'いいねした投稿を見る', likes_path, class: "change" %>
   <% end %>
 </div>
 

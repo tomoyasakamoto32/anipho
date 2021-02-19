@@ -10,10 +10,6 @@ class LikesController < ApplicationController
     Like.find_by(user_id: current_user.id, post_id: params[:id]).destroy
   end
 
-  def index
-    @likes = Like.where(user_id: current_user.id).order('created_at DESC').includes(:post)
-  end
-
   private
 
   def like_params
