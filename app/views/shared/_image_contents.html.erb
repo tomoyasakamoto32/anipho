@@ -1,7 +1,5 @@
 <% if post.images.length < 2 %>
-  <% post.images.each do |image| %>
-    <%= image_tag image, class: "post-img"%>
-  <% end %>
+  <%= image_tag post.images[0], class: "post-img"%>
 <% else %>
   <div class="swiper-container">
     <div class= "swiper-wrapper img-index">
