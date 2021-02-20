@@ -37,7 +37,7 @@ https://anipho-app.com/
 - docker-compose 1.27.4
 - nginx 1.18.0
 - mysql 5.6
-- AWS(EC2, ALB, Route53)
+- AWS(EC2, S3, ALB, Route53)
 
 ### その他
 - RSpec
