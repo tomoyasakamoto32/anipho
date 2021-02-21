@@ -6,15 +6,31 @@
   <%= render "shared/error_messages", model: @form %>
   <div class="img-upload">
       <div class="weight-bold-text">
-        ペットの写真
+        ペットの写真(5枚まで)
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :images, name: 'posts_tag[images][]', class:"post-image", id:"message_image" %>
-        <div id="image-list"></div>
+        <%= f.file_field :images, name: 'posts_tag[images][]', class:"post-image", id:"message_image_1" %>
+        <div id="image-list1"></div>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field(:images, name: 'posts_tag[images][]', class:"post-image", id:"message_image_2")%>
+        <div id="image-list2"></div>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field(:images, name: 'posts_tag[images][]', class:"post-image", id:"message_image_3")%>
+        <div id="image-list3"></div>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field(:images, name: 'posts_tag[images][]', class:"post-image", id:"message_image_4")%>
+        <div id="image-list4"></div>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field(:images, name: 'posts_tag[images][]', class:"post-image", id:"message_image_5")%>
+        <div id="image-list5"></div>
       </div>
   </div>
   <div class="new-postss">
