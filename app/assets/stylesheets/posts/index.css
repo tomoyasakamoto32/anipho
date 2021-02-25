@@ -333,5 +333,14 @@ footer {
     display:inline;
     margin: 1%;
   }
+
+  .post-btn:hover {
+    background-color: #6f5949;
+  }
+
+  .root-index:hover {
+    background-color: #6f5949;
+  }
+
 }
 
